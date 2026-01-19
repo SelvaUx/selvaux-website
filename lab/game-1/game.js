@@ -174,11 +174,24 @@ function createParticles(x, y, count, color) {
 
 // Audio
 const AudioSys = {
+    hitSound: new Audio('sounds/hit.mp3'),
+
     init: function () {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        this.hitSound.load();
     },
     play: function (type) {
-        if (isMuted || !audioCtx) return;
+        if (isMuted) return;
+
+        // Custom File for HIT
+        if (type === 'hit') {
+            this.hitSound.currentTime = 0;
+            this.hitSound.play().catch(e => console.log(e));
+            return;
+        }
+
+        // Synth for others
+        if (!audioCtx) return;
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -198,13 +211,6 @@ const AudioSys = {
             gain.gain.setValueAtTime(0.1, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
             osc.start(); osc.stop(now + 0.15);
-        } else if (type === 'hit') {
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(150, now);
-            osc.frequency.linearRampToValueAtTime(50, now + 0.1);
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.linearRampToValueAtTime(0, now + 0.1);
-            osc.start(); osc.stop(now + 0.1);
         }
     }
 };
