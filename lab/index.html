@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lab - Selva Pandi Francis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="bg-[#0d1117] text-[#c9d1d9]">
+
+    <!-- Navigation -->
+    <nav class="bg-[#161b22] border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-4xl">
+            <a href="../index.html" class="text-xl font-bold text-[#58a6ff]">SelvaUx</a>
+            <div class="space-x-4 md:space-x-6">
+                <a href="../index.html" class="text-gray-300 hover:text-[#58a6ff] transition">Home</a>
+                <a href="../about/" class="text-gray-300 hover:text-[#58a6ff] transition">About</a>
+                <a href="../projects/" class="text-gray-300 hover:text-[#58a6ff] transition">Projects</a>
+                <a href="../lab/" class="text-[#58a6ff] font-semibold transition">Lab</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+
+        <!-- Lab Overview -->
+        <section id="lab" class="py-16 animate-on-scroll">
+            <h1 class="text-5xl font-bold text-[#58a6ff] mb-6 text-center">The Lab 🧪</h1>
+            <p class="text-center text-gray-400 mb-12 text-xl">
+                Experiments, fun ideas, and half-baked prototypes. <br> Enter at your own risk.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Game 1 -->
+                <a href="game-1/"
+                    class="bg-[#161b22] p-6 rounded-lg border border-gray-700 hover:border-[#58a6ff] transition group">
+                    <div
+                        class="h-32 bg-gray-800 rounded mb-4 flex items-center justify-center group-hover:bg-gray-700 transition">
+                        <i class="fas fa-gamepad text-4xl text-gray-500 group-hover:text-[#58a6ff]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Game 1</h3>
+                    <p class="text-sm text-gray-400">A small browser game.</p>
+                </a>
+
+                <!-- SaraAI -->
+                <a href="saraai/"
+                    class="bg-[#161b22] p-6 rounded-lg border border-gray-700 hover:border-[#58a6ff] transition group">
+                    <div
+                        class="h-32 bg-gray-800 rounded mb-4 flex items-center justify-center group-hover:bg-gray-700 transition">
+                        <i class="fas fa-robot text-4xl text-gray-500 group-hover:text-[#58a6ff]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">SaraAI</h3>
+                    <p class="text-sm text-gray-400">Offline AI behavior engine - intent-based architecture.</p>
+                </a>
+
+                <!-- Sandbox -->
+                <a href="sandbox/"
+                    class="bg-[#161b22] p-6 rounded-lg border border-gray-700 hover:border-[#58a6ff] transition group">
+                    <div
+                        class="h-32 bg-gray-800 rounded mb-4 flex items-center justify-center group-hover:bg-gray-700 transition">
+                        <i class="fas fa-box-open text-4xl text-gray-500 group-hover:text-[#58a6ff]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Sandbox</h3>
+                    <p class="text-sm text-gray-400">Testing ground for new UI components.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-500 text-sm border-t border-gray-800 mt-8">
+            &copy; 2026 Selva Pandi Francis. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js" defer></script>
+</body>
+
+</html>
