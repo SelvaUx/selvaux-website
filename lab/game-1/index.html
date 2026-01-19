@@ -1,1 +1,314 @@
-<h1>Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flappy Saro - The Lab</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #222;
+            color: #fff;
+            touch-action: none;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        #game-container {
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            width: 320px;
+            height: 480px;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: #70c5ce;
+        }
+
+        /* UI Overlay */
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 20;
+        }
+
+        /* Ensure overlay content is centered and clickable */
+        #ui-layer>div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: auto;
+            /* Re-enable clicks for children */
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 3px 3px 0 #000;
+            margin-bottom: 20px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .panel {
+            background: #ded895;
+            border: 2px solid #553000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 280px;
+        }
+
+        .panel-title {
+            color: #e86101;
+            font-weight: 900;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        .score-box {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .score-item {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+        }
+
+        .score-val {
+            font-size: 20px;
+            font-weight: 900;
+            color: #333;
+        }
+
+        .message-text {
+            color: #553000;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .btn {
+            background: #58a6ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #2c72b8;
+            margin: 5px;
+            pointer-events: auto;
+            width: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #bd7b00;
+        }
+
+        .btn-green {
+            background: #4ec04e;
+            box-shadow: 0 4px 0 #2f812f;
+        }
+
+        .btn-red {
+            background: #e86101;
+            box-shadow: 0 4px 0 #a04300;
+        }
+
+        .btn-dark {
+            background: #161b22;
+            box-shadow: 0 4px 0 #000;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #553000;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Controls */
+        #controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 50;
+            pointer-events: auto;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #fff;
+            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #553000;
+            cursor: pointer;
+        }
+
+        .hud-score {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 0 #000;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Back Button */
+        #back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 20px;
+            z-index: 50;
+            pointer-events: auto;
+            transition: color 0.2s;
+        }
+
+        #back-btn:hover {
+            color: #fff;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../lab/" id="back-btn"><i class="fas fa-arrow-left"></i></a>
+
+    <div id="game-container">
+        <canvas id="gameCanvas" width="320" height="480"></canvas>
+        <div id="hud-score" class="hud-score hidden">0</div>
+
+        <div id="controls">
+            <div id="btn-pause" class="icon-btn"><i class="fas fa-pause"></i></div>
+            <div id="btn-sound" class="icon-btn"><i class="fas fa-volume-up"></i></div>
+        </div>
+
+        <div id="ui-layer">
+
+            <!-- 1. Password Screen -->
+            <div id="password-screen">
+                <div class="panel">
+                    <div class="panel-title">SARA PROTECT</div>
+                    <div style="color:#553000; margin-bottom:10px;">Enter Password</div>
+                    <input type="password" id="pass-input" placeholder="Password">
+                    <button id="pass-submit" class="btn btn-dark">UNLOCK</button>
+                    <div id="pass-error" class="hidden" style="color:red; font-size:12px; margin-top:5px;">Wrong
+                        Password!</div>
+                </div>
+            </div>
+
+            <!-- 2. Level Select (Start Screen) -->
+            <div id="level-screen" class="hidden">
+                <div class="title">FLAPPY<br>SARO</div>
+                <div class="panel">
+                    <div class="panel-title">SELECT LEVEL</div>
+                    <button class="btn btn-green" onclick="selectLevel('EASY')">EASY</button>
+                    <button class="btn" onclick="selectLevel('HARD')">HARD</button>
+                    <button class="btn btn-red" onclick="selectLevel('IMPOSSIBLE')">IMPOSSIBLE</button>
+                </div>
+            </div>
+
+            <!-- 3. Game Over Screen -->
+            <div id="game-over-screen" class="hidden">
+                <div class="panel">
+                    <div class="panel-title">GAME OVER</div>
+                    <div class="score-box">
+                        <div class="score-item">
+                            <span>SCORE</span>
+                            <span id="final-score" class="score-val">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span>BEST</span>
+                            <span id="best-score" class="score-val">0</span>
+                        </div>
+                    </div>
+                    <div id="custom-message" class="message-text"></div>
+                    <button id="restart-btn" class="btn btn-start">PLAY AGAIN</button>
+                    <button class="btn btn-dark" style="font-size:12px; padding:5px;" onclick="location.reload()">CHANGE
+                        LEVEL</button>
+                </div>
+            </div>
+
+            <!-- Pause Screen -->
+            <div id="pause-screen" class="hidden">
+                <div class="panel" style="width: 50%;">
+                    <div class="panel-title" style="margin:0;">PAUSED</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
