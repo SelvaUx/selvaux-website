@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaraAI - Offline AI Behavior Simulator</title>
+    <meta name="description" content="Local AI behavior engine demonstrating intent-based architecture">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <!-- Back Navigation -->
+        <a href="../../lab/" class="back-link">
+            ← Back to Lab
+        </a>
+
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <div class="header-top">
+                <h1 class="dashboard-title">
+                    🤖 SaraAI
+                    <span style="font-size: 14px; font-weight: 400; color: var(--text-secondary);">v2.0</span>
+                </h1>
+                <div id="status-indicator" class="status-bar">
+                    <span class="status-dot"></span>
+                    <span>SYSTEM: ONLINE</span>
+                    <span class="status-divider">|</span>
+                    <span>MODE: LOCAL SIMULATION</span>
+                </div>
+            </div>
+            <p class="header-subtitle">
+                Offline AI Behavior Engine – Intent-Based Architecture Demo
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="dashboard-content">
+
+            <!-- Chat Section -->
+            <section class="chat-section">
+                <div class="chat-header">
+                    💬 Conversation
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+                    <button id="send-button">Send</button>
+                </div>
+            </section>
+
+            <!-- Side Panel -->
+            <aside class="side-panel">
+
+                <!-- Debug Info -->
+                <div class="panel-card">
+                    <h3>🔍 Debug Info</h3>
+                    <div class="info-row">
+                        <span class="info-label">Last Intent</span>
+                        <span id="intent-display" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Confidence</span>
+                        <span id="confidence-display" class="info-value">-</span>
+                    </div>
+                </div>
+
+                <!-- System Stats -->
+                <div class="panel-card">
+                    <h3>📊 System Stats</h3>
+                    <div id="stats-display">
+                        <div>
+                            <span>Intents:</span>
+                            <span>-</span>
+                        </div>
+                        <div>
+                            <span>Patterns:</span>
+                            <span>-</span>
+                        </div>
+                        <div>
+                            <span>Responses:</span>
+                            <span>-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture Info -->
+                <div class="panel-card">
+                    <h3>⚙️ Architecture</h3>
+                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+                        <p style="margin-bottom: 8px;">
+                            <strong style="color: var(--text-primary);">Flow:</strong><br>
+                            Input → Normalize → Match → Respond
+                        </p>
+                        <p style="margin-bottom: 8px;">
+                            <strong style="color: var(--text-primary);">Type:</strong><br>
+                            Rule-based intent detection
+                        </p>
+                        <p>
+                            <strong style="color: var(--text-primary);">Processing:</strong><br>
+                            100% local, no API calls
+                        </p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/ui.js"></script>
+</body>
+
+</html>
