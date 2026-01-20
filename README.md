@@ -10,7 +10,7 @@ Welcome to my personal corner of the internet. This repository hosts my portfoli
 
 It serves as both a professional profile and a digital laboratory for my experiments.
 
-**Live Site**: [selvaux.in](https://selvaux.in) *(Coming Soon)*
+**Live Site**: [selvaux.in](https://selvaux.in) 
 
 ---
 
