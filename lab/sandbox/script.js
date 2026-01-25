@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Constants
-const DOC_ID = "main-room-v2"; // The ID of the document where we store state
+const DOC_ID = "main-room-v3"; // The ID of the document where we store state
 const DOC_PATH = "mini-project"; // The collection ID
 
 const state = {
@@ -42,9 +42,9 @@ const ROLES = ['Designer', 'Developer', 'Manager', 'Analyst', 'Researcher'];
 const NAMES = [
     'Samuel', 'Praveen', 'Saravanan',
     'Nivash', 'Bala', 'Jeyendra',
-    'Jeyakumar', 'Ajith', 'Ajay',      // Team C: Swapped John -> Ajith
-    'Vishnu', 'Abu', 'John',           // Team D: Swapped Ajith -> John (Target Team)
-    'SelvaUx', 'Surya', 'Gandhi Raj'   // Team E members
+    'Jeyakumar', 'Ajith', 'Ajay',      // Team C
+    'Vishnu', 'Abu', 'John',           // Team D
+    'SelvaUx', 'Surya', 'Gandhi Raj'   // Team E
 ];
 const COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6', '#a855f7', '#ec4899'];
 
@@ -88,7 +88,7 @@ function initDefaultTeams() {
             id: `team-${i}`,
             name: `Team ${String.fromCharCode(65 + i)}`,
             members: [],
-            locked: i === 3 // Lock Team D (index 3) ["Vishnu", "Abu", "John"]
+            locked: i === 3 || i === 4 // Lock Team D (3) and Team E (4)
         };
 
         for (let j = 0; j < 3; j++) {
