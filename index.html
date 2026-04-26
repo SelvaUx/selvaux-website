@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selva Pandi Francis — Empire Builder</title>
+  <meta name="description" content="ECE student building the future with AI, IoT, and embedded systems. Creator of SaraAI, OTDR-AI, and AquaSync.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<canvas id="icon-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">Selva<span>Ux</span></a>
+  <div class="nav-links desktop-only">
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a class="nav-cta" href="#connect">Connect</a>
+  </div>
+  <div class="nav-hamburger mobile-only" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <span class="badge-dot"></span>
+      Available for collaboration
+    </div>
+    <h1 class="hero-name reveal">
+      Selva Pandi<br><span class="accent">Francis</span>
+    </h1>
+    <div class="hero-typewriter reveal">
+      <span id="typewriter-text" data-lines='["ECE Student @ GU Pope","AI Systems Architect","Building SaraOS & SaraAI","Chasing the Chitti Dream","Self-Made Tech Empire Builder"]'></span><span class="tw-cursor">|</span>
+    </div>
+    <p class="hero-desc reveal">
+      ECE student building the future — one line of code, one AI model,
+      one autonomous agent at a time. Chasing the dream of <em>Chitti</em>
+      in the age of neural networks.
+    </p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="/projects/">View Projects →</a>
+      <a class="btn btn-outline" href="#connect">Connect</a>
+    </div>
+
+    <!-- Profile -->
+    <div class="profile-section reveal">
+      <img class="profile-avatar" src="https://i.postimg.cc/xCLfCYwL/black-and-white-anime-pfp-4532.png" alt="Selva Pandi Francis">
+      <div class="profile-tags">
+        <span class="tag">SaraAI (7 Versions)</span>
+        <span class="tag">SaraAI Max</span>
+        <span class="tag">OTDR-AI</span>
+        <span class="tag">Sara-OS</span>
+        <span class="tag">SaraAI-n8n</span>
+        <span class="tag">WhatsApp Viewer</span>
+      </div>
+      <div class="social-links">
+        <a class="social-btn" href="https://github.com/SelvaUx" target="_blank">GitHub</a>
+        <a class="social-btn" href="https://linkedin.com/in/selvaux/" target="_blank">LinkedIn</a>
+        <a class="social-btn" href="mailto:selva.ux@yahoo.com">Email</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <div class="stat-num" data-count="14">0</div>
+        <div class="stat-label">GitHub Repos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="7">0</div>
+        <div class="stat-label">SaraAI Versions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="19">0</div>
+        <div class="stat-label">Stars Given</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Featured Builds</div>
+    <h2 class="section-title reveal">Things I've <span class="accent">Engineered</span></h2>
+    <div class="projects-grid">
+      <a class="project-card reveal" href="https://github.com/SelvaUx/SaraAI-Max" target="_blank" style="text-decoration:none">
+        <div class="project-accent" style="background:var(--primary-500)"></div>
+        <span class="project-icon">🤖</span>
+        <div class="project-name">SaraAI Max</div>
+        <div class="project-desc">Unifies all 7 SaraAI versions (v1–v6) into one terminal-native, Ollama-powered AI assistant — designed to feel like Claude Code, built to run like a pro.</div>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Ollama</span>
+          <span class="tech-badge">CLI</span>
+          <span class="tech-badge">12 Tools</span>
+        </div>
+      </a>
+      <a class="project-card reveal" href="https://github.com/SelvaUx/OTDR-AI" target="_blank" style="text-decoration:none">
+        <div class="project-accent" style="background:var(--primary-400)"></div>
+        <span class="project-icon">🔆</span>
+        <div class="project-name">OTDR-AI</div>
+        <div class="project-desc">AI-based system to detect and analyze faults in optical fiber communication using OTDR data. Achieves 99.5% accuracy with hybrid CNN-LSTM.</div>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">CNN-LSTM</span>
+          <span class="tech-badge">TensorFlow</span>
+          <span class="tech-badge">Signal Processing</span>
+        </div>
+      </a>
+      <a class="project-card reveal" href="https://github.com/SelvaUx/Sara-OS" target="_blank" style="text-decoration:none">
+        <div class="project-accent" style="background:var(--primary-200)"></div>
+        <span class="project-icon">💻</span>
+        <div class="project-name">Sara-OS</div>
+        <div class="project-desc">AI-Powered Voice Operating System. Custom embedded OS concept with modular task execution and AI assistant integration.</div>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Embedded</span>
+          <span class="tech-badge">Linux</span>
+          <span class="tech-badge">Shell</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label reveal">Capabilities</div>
+    <h2 class="section-title reveal">My Tech <span class="accent">Arsenal</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card" style="--pct:90%">
+        <div class="skill-header"><span class="skill-name">Python / AI & ML</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:88%">
+        <div class="skill-header"><span class="skill-name">IoT Architecture / MQTT</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:85%">
+        <div class="skill-header"><span class="skill-name">Embedded C / ESP32</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:80%">
+        <div class="skill-header"><span class="skill-name">Deep Learning (CNN, LSTM)</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:78%">
+        <div class="skill-header"><span class="skill-name">JavaScript / HTML / CSS</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:72%">
+        <div class="skill-header"><span class="skill-name">Signal Processing / MATLAB</span><span class="skill-pct">72%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:70%">
+        <div class="skill-header"><span class="skill-name">Computer Vision / OpenCV</span><span class="skill-pct">70%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+      <div class="skill-card" style="--pct:65%">
+        <div class="skill-header"><span class="skill-name">Linux / Bash / DevOps</span><span class="skill-pct">65%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="section-inner">
+    <div class="principles-grid">
+      <div>
+        <div class="section-label reveal">The Code I Live By</div>
+        <h2 class="section-title reveal">Guiding<br><span class="accent">Principles</span></h2>
+      </div>
+      <div class="principles-list">
+        <div class="principle reveal-left">
+          <span class="principle-num">01</span>
+          <p class="principle-text">"Knowledge is my power. Code is my weapon. Kindness is my rule."</p>
+        </div>
+        <div class="principle reveal-left">
+          <span class="principle-num">02</span>
+          <p class="principle-text">"Build your own lab. Code your own world. Create your own future."</p>
+        </div>
+        <div class="principle reveal-left">
+          <span class="principle-num">03</span>
+          <p class="principle-text">"The one who understands time can design the future."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="connect">
+  <div class="footer-title">Let's Build<br>The <span class="accent">Future</span></div>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com">selva.ux@yahoo.com</a>
+    <a class="btn btn-outline" href="https://github.com/SelvaUx" target="_blank">GitHub</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/selvaux/" target="_blank">LinkedIn</a>
+  </div>
+  <p class="footer-copy">© 2026 Selva Pandi Francis · selvaux.in · Built with ambition</p>
+</footer>
+
+</main>
+
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

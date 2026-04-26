@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Selva Pandi Francis</title>
+  <meta name="description" content="ECE Engineer, AI Developer, Future Tech Innovator. Building the future with AI and Intelligence.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .about-hero{text-align:center;padding:8rem 2rem 4rem}
+    .about-tagline{font-family:var(--font-mono);color:var(--primary-500);font-size:.9rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+    .about-headline{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+    .about-summary{max-width:720px;margin:0 auto;color:var(--neutral-600);line-height:1.8;font-size:1.05rem}
+
+    .profile-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+    .profile-row img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--primary-100)}
+    .profile-info h3{font-family:var(--font-display);font-size:1.6rem;margin:0}
+    .profile-info p{color:var(--neutral-500);margin:.25rem 0}
+    .profile-info .role-badge{display:inline-block;background:var(--primary-50);color:var(--primary-500);padding:.3rem .8rem;border-radius:9999px;font-size:.8rem;font-weight:600;margin-top:.5rem}
+
+    .skill-section{margin-bottom:3rem}
+    .skill-section h3{font-family:var(--font-display);font-size:1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+    .skill-chips{display:flex;flex-wrap:wrap;gap:.6rem}
+    .skill-chip{background:var(--neutral-100);border:1px solid var(--neutral-200);padding:.5rem 1rem;border-radius:12px;font-size:.85rem;color:var(--neutral-700);transition:all .3s ease;cursor:default}
+    .skill-chip:hover{background:var(--primary-50);border-color:var(--primary-200);color:var(--primary-500);transform:translateY(-2px)}
+    .skill-chip.highlight{background:var(--primary-500);color:#fff;border-color:var(--primary-500)}
+    .skill-chip.highlight:hover{background:var(--primary-600);transform:translateY(-2px)}
+
+    .strength-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:1.5rem}
+    .strength-item{background:var(--neutral-100);border-radius:20px;padding:1.5rem;transition:all .3s ease}
+    .strength-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    .strength-item .s-icon{font-size:1.8rem;margin-bottom:.6rem}
+    .strength-item h4{font-family:var(--font-display);font-size:1rem;margin:0 0 .4rem}
+    .strength-item p{color:var(--neutral-500);font-size:.85rem;margin:0;line-height:1.5}
+
+    .vision-block{background:linear-gradient(135deg,var(--primary-50),#fff);border:2px solid var(--primary-100);border-radius:24px;padding:2.5rem;margin:2rem 0}
+    .vision-block h3{font-family:var(--font-display);font-size:1.5rem;margin:0 0 1rem}
+    .vision-block p{color:var(--neutral-600);line-height:1.8;margin:0 0 1rem}
+    .vision-goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem}
+    .vision-goal{background:#fff;border-radius:16px;padding:1.2rem;border:1px solid var(--neutral-200);transition:all .3s}
+    .vision-goal:hover{border-color:var(--primary-300);transform:translateY(-3px)}
+    .vision-goal .vg-icon{font-size:1.4rem;margin-bottom:.4rem}
+    .vision-goal h4{font-size:.9rem;margin:0 0 .3rem;font-family:var(--font-display)}
+    .vision-goal p{font-size:.8rem;color:var(--neutral-500);margin:0;line-height:1.4}
+
+    .timeline-v2{position:relative;padding-left:2rem;margin-top:1.5rem}
+    .timeline-v2::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--primary-100)}
+    .tl-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+    .tl-item::before{content:'';position:absolute;left:-2rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--primary-500);border:3px solid #fff;box-shadow:0 0 0 2px var(--primary-200)}
+    .tl-item.active::before{animation:pulse-dot 2s infinite}
+    @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 2px var(--primary-200)}50%{box-shadow:0 0 0 6px rgba(245,65,66,.15)}}
+    .tl-year{font-family:var(--font-mono);font-size:.8rem;color:var(--primary-500);font-weight:700}
+    .tl-title{font-family:var(--font-display);font-size:1.1rem;margin:.2rem 0}
+    .tl-desc{color:var(--neutral-500);font-size:.85rem;line-height:1.5}
+
+    .tagline-carousel{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .tagline-carousel::-webkit-scrollbar{display:none}
+    .tagline-card{min-width:280px;scroll-snap-align:start;background:var(--neutral-100);border-radius:20px;padding:1.5rem;text-align:center;transition:all .3s;cursor:grab;flex-shrink:0}
+    .tagline-card:hover{background:var(--primary-50);transform:scale(1.03)}
+    .tagline-card q{font-family:var(--font-display);font-size:1.05rem;font-style:italic;color:var(--neutral-800)}
+
+    .interests-row{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.5rem 0}
+
+    .github-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}
+    .gs-card{background:var(--neutral-100);border-radius:16px;padding:1.2rem;text-align:center;transition:all .3s}
+    .gs-card:hover{transform:translateY(-3px);background:var(--primary-50)}
+    .gs-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--primary-500)}
+    .gs-label{font-size:.8rem;color:var(--neutral-500);margin-top:.2rem}
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<canvas id="icon-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="/">Selva<span>Ux</span></a>
+  <div class="nav-links desktop-only">
+    <a href="/about/" class="nav-link active">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+  </div>
+  <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-tagline reveal">// about selva.ux</div>
+  <h1 class="about-headline reveal">Engineering Intelligence<br><span class="accent">Beyond Limits</span></h1>
+  <p class="about-summary reveal">I am an Electronics and Communication Engineering student with a strong focus on Artificial Intelligence, embedded systems, and futuristic technology development. A strong AI user and professional vibe coder — building intelligent systems that merge AI with real-world applications.</p>
+</div>
+
+<!-- PROFILE CARD -->
+<section>
+  <div class="section-inner">
+    <div class="profile-row reveal">
+      <img src="https://i.postimg.cc/xCLfCYwL/black-and-white-anime-pfp-4532.png" alt="Selva Pandi Francis">
+      <div class="profile-info">
+        <h3>Selva Pandi <span class="accent">Francis</span></h3>
+        <p>ECE Engineer · AI Developer · Future Tech Innovator</p>
+        <span class="role-badge">🎓 B.E. ECE — Dr. G.U. Pope College of Engineering, TN</span>
+      </div>
+    </div>
+
+    <!-- BIO -->
+    <div class="principles-grid">
+      <div>
+        <div class="section-label reveal">Who I Am</div>
+        <h2 class="section-title reveal">The <span class="accent">Builder</span></h2>
+      </div>
+      <div class="reveal">
+        <p style="color:var(--neutral-600);line-height:1.8;margin-bottom:1rem">
+          I'm Selva Pandi — <strong>Selva.Ux</strong> online. An ECE student who decided that waiting to be qualified was a worse plan than just building the thing. So I built an AI assistant. Then another version. Then seven. Then I built a custom OS for it. Then a fiber fault detection engine. Then a voice file manager. The list doesn't stop because the curiosity doesn't stop.
+        </p>
+        <p style="color:var(--neutral-600);line-height:1.8;margin-bottom:1rem">
+          My engineering philosophy is simple: <em>offline first, privacy always, real hardware required.</em> I don't trust solutions that work only in ideal conditions. I build for the messy, low-bandwidth, real world — where people need technology that actually functions.
+        </p>
+        <p style="color:var(--neutral-600);line-height:1.8">
+          Beyond code and circuits, I find the same obsessive attention to detail in everything — anime arcs that land perfectly, physics thought experiments that keep me up at night, and the quiet fire of building your own Iron Man world before getting a driver's license.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- SKILLS -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Core Skills</div>
+    <h2 class="section-title reveal">Tech <span class="accent">Arsenal</span></h2>
+
+    <div class="skill-section reveal">
+      <h3>🧠 AI & Software</h3>
+      <div class="skill-chips">
+        <span class="skill-chip highlight">Python</span>
+        <span class="skill-chip highlight">AI Agent Development</span>
+        <span class="skill-chip">Machine Learning</span>
+        <span class="skill-chip">Local LLMs (Ollama)</span>
+        <span class="skill-chip">NLP & Voice Assistants</span>
+        <span class="skill-chip">Large Language Models</span>
+        <span class="skill-chip highlight">Professional Vibe Coder</span>
+      </div>
+    </div>
+
+    <div class="skill-section reveal">
+      <h3>⚙️ Systems & Tools</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Linux (Zorin OS)</span>
+        <span class="skill-chip">Windows 11</span>
+        <span class="skill-chip highlight">Git & GitHub</span>
+        <span class="skill-chip">API Integration</span>
+        <span class="skill-chip">n8n Automation</span>
+        <span class="skill-chip">HTML / CSS / JS</span>
+      </div>
+    </div>
+
+    <div class="skill-section reveal">
+      <h3>🔌 Electronics & Embedded</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Circuit Design (Proteus)</span>
+        <span class="skill-chip">Arduino Programming</span>
+        <span class="skill-chip">Microcontrollers</span>
+        <span class="skill-chip">Sensors & IoT</span>
+        <span class="skill-chip">PCB Design</span>
+        <span class="skill-chip">VLSI Basics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section style="background:var(--neutral-100)">
+  <div class="section-inner">
+    <div class="section-label reveal">What Sets Me Apart</div>
+    <h2 class="section-title reveal">My <span class="accent">Strengths</span></h2>
+    <div class="strength-grid">
+      <div class="strength-item reveal">
+        <div class="s-icon">🚀</div>
+        <h4>Futuristic Mindset</h4>
+        <p>Strong ambition to build systems that don't exist yet — thinking 10 years ahead.</p>
+      </div>
+      <div class="strength-item reveal">
+        <div class="s-icon">🧠</div>
+        <h4>Self-Learning & Research</h4>
+        <p>Every project is self-taught. No tutorials — just docs, curiosity, and midnight debugging.</p>
+      </div>
+      <div class="strength-item reveal">
+        <div class="s-icon">🔧</div>
+        <h4>Hardware + Software</h4>
+        <p>Rare ability to bridge circuits and code — from PCB design to AI agent architecture.</p>
+      </div>
+      <div class="strength-item reveal">
+        <div class="s-icon">💡</div>
+        <h4>Real-World Problem Solving</h4>
+        <p>Building for the messy, offline, low-bandwidth world — not just ideal lab conditions.</p>
+      </div>
+      <div class="strength-item reveal">
+        <div class="s-icon">🤖</div>
+        <h4>Strong AI User</h4>
+        <p>Not just building AI — using it professionally to 10x productivity and quality.</p>
+      </div>
+      <div class="strength-item reveal">
+        <div class="s-icon">⚡</div>
+        <h4>Relentless Builder</h4>
+        <p>7 versions of SaraAI. A custom OS. A fiber fault detector. The list never stops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Timeline</div>
+    <h2 class="section-title reveal">The <span class="accent">Journey</span></h2>
+    <div class="timeline-v2">
+      <div class="tl-item active reveal">
+        <div class="tl-year">2026 — NOW</div>
+        <div class="tl-title">SaraAI Max + SaraAI-n8n + Sara-OS</div>
+        <div class="tl-desc">Agentic CLI with Ollama + 12 tools. n8n automation workflows. Custom AI-powered OS. The empire expands.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2025</div>
+        <div class="tl-title">OTDR-AI — 99.5% Accuracy</div>
+        <div class="tl-desc">Hybrid CNN-LSTM for optical fiber fault detection. Signal processing meets deep learning.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2025</div>
+        <div class="tl-title">SaraAI v3–v6 + Voice File Manager</div>
+        <div class="tl-desc">Local AI with Vosk, C# rewrite, 6-language architecture, Electron desktop app. Voice-controlled file management.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2023–2024</div>
+        <div class="tl-title">SaraAI v1–v2 — It Begins</div>
+        <div class="tl-desc">Basic TTS + Wikipedia bot → Wake word "Hey Sara" + continuous listening. The spark that started everything.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2023</div>
+        <div class="tl-title">B.E. ECE — Dr. G.U. Pope College</div>
+        <div class="tl-desc">Started Electronics & Communication Engineering. Specializing in VLSI, embedded systems, and AI/ML.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section style="background:var(--primary-50)">
+  <div class="section-inner">
+    <div class="section-label reveal">The Big Picture</div>
+    <h2 class="section-title reveal">Empire <span class="accent">Vision</span></h2>
+    <div class="vision-block reveal">
+      <h3>🚩 From Circuits to Conscious Machines</h3>
+      <p>My long-term goal is to build a universal autonomous AI agent capable of performing both digital and physical tasks. I aim to develop systems that can replace repetitive human work and enhance human potential through intelligent automation and robotics.</p>
+      <p>I'm not just coding apps — I'm designing tools, machines, and realities that help humanity and expand imagination.</p>
+      <div class="vision-goals">
+        <div class="vision-goal"><div class="vg-icon">🧠</div><h4>SaraAI 2.0</h4><p>Offline + Voice + Emotion-Based Responses</p></div>
+        <div class="vision-goal"><div class="vg-icon">🦾</div><h4>Iron Suit Blueprint</h4><p>AI-JARVIS powered wearable system</p></div>
+        <div class="vision-goal"><div class="vg-icon">🪐</div><h4>Virtual World Engine</h4><p>Code your own simulated universe</p></div>
+        <div class="vision-goal"><div class="vg-icon">💡</div><h4>Open Knowledge Hub</h4><p>Help others learn what I master</p></div>
+        <div class="vision-goal"><div class="vg-icon">🤖</div><h4>Smart Home Empire</h4><p>Voice + AI + Full Automation</p></div>
+        <div class="vision-goal"><div class="vg-icon">⏳</div><h4>E=mc² Cracker</h4><p>Realistic time-bending experiments</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section>
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label reveal">Beyond Engineering</div>
+    <h2 class="section-title reveal">Things I <span class="accent">Love</span></h2>
+    <div class="interests-row reveal">
+      <span class="chip">🎌 Anime</span>
+      <span class="chip">⚛️ Quantum Physics</span>
+      <span class="chip">🌀 Relativity</span>
+      <span class="chip">⏳ Time Travel</span>
+      <span class="chip">🚀 Space</span>
+      <span class="chip">📚 Books</span>
+      <span class="chip">🎬 Movies</span>
+      <span class="chip">🤖 Robotics</span>
+      <span class="chip">🧠 Philosophy</span>
+      <span class="chip">🎮 VR Worlds</span>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINES -->
+<section style="background:var(--neutral-100)">
+  <div class="section-inner">
+    <div class="section-label reveal">Quotes That Drive Me</div>
+    <h2 class="section-title reveal">The <span class="accent">Code</span> I Live By</h2>
+    <div class="tagline-carousel reveal">
+      <div class="tagline-card"><q>Knowledge is my power. Code is my weapon. Kindness is my rule.</q><p style="color:var(--neutral-400);font-size:.8rem;margin-top:.5rem">— Selva.Ux</p></div>
+      <div class="tagline-card"><q>Build your own lab. Code your own world. Create your own future.</q><p style="color:var(--neutral-400);font-size:.8rem;margin-top:.5rem">— Inspired by Iron Man</p></div>
+      <div class="tagline-card"><q>The one who understands time can design the future.</q><p style="color:var(--neutral-400);font-size:.8rem;margin-top:.5rem">— The Physicist in me</p></div>
+      <div class="tagline-card"><q>Some things are worth building slowly. The best ones always are.</q><p style="color:var(--neutral-400);font-size:.8rem;margin-top:.5rem">— Selva.Ux</p></div>
+      <div class="tagline-card"><q>I don't want to follow the system. I want to design a new one.</q><p style="color:var(--neutral-400);font-size:.8rem;margin-top:.5rem">— Selva.Ux</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="connect">
+  <div class="footer-title">Let's Build<br>The <span class="accent">Future</span></div>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com">selva.ux@yahoo.com</a>
+    <a class="btn btn-outline" href="https://github.com/SelvaUx" target="_blank">GitHub</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/selvaux/" target="_blank">LinkedIn</a>
+  </div>
+  <p class="footer-copy">© 2026 Selva Pandi Francis · selvaux.in · Still building. Always learning. Never stopping.</p>
+</footer>
+
+</main>
+<script src="../assets/js/script.js" defer></script>
+<script>
+// Animate github stat counters on this page too
+document.querySelectorAll('.gs-num[data-count]').forEach(el=>{
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){
+      const target=+el.dataset.count;
+      const duration=1500;const start=performance.now();
+      function tick(now){
+        const p=Math.min((now-start)/duration,1);
+        const ease=1-Math.pow(1-p,3);
+        el.textContent=Math.round(ease*target);
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);observer.disconnect();
+    }});
+  },{threshold:.3});
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

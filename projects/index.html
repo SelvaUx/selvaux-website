@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Selva Pandi Francis</title>
+  <meta name="description" content="SaraAI, OTDR-AI, AquaSync, SaraOS and more projects by Selva Pandi Francis.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<canvas id="icon-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="/">Selva<span>Ux</span></a>
+  <div class="nav-links desktop-only">
+    <a href="/about/">About</a>
+    <a href="/projects/" class="active">Projects</a>
+    <a href="/lab/">Lab</a>
+    <a href="/blog/">Blog</a>
+  </div>
+  <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+</div>
+
+<main>
+
+<div class="page-header">
+  <div class="section-label">// my work</div>
+  <h1 class="section-title">Things I've <span class="accent">Built</span></h1>
+  <p class="section-desc" style="margin:0 auto">A collection of things I've built, broken, and fixed.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <!-- SaraAI -->
+    <div class="project-detail filterable reveal" data-category="ai">
+      <span class="project-icon">🧠</span>
+      <div class="project-name">SaraAI — 7-Version AI Assistant Evolution</div>
+      <div class="project-desc">Python-based desktop assistant that responds to text commands — open apps, search Google, check time, read Wikipedia, tell jokes, take screenshots. 7 versions from basic TTS to full agentic intelligence. The project that started it all.</div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">TTS</span>
+        <span class="tech-badge">Vosk</span>
+        <span class="tech-badge">LM Studio</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-primary" href="https://github.com/SelvaUx/SaraAI" target="_blank" style="font-size:0.85rem;padding:0.6rem 1.2rem">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- SaraAI Max -->
+    <div class="project-detail filterable reveal" data-category="ai">
+      <span class="project-icon">🤖</span>
+      <div class="project-name">SaraAI Max — Agentic CLI Intelligence</div>
+      <div class="project-desc">Unifies all 7 SaraAI versions (v1–v6) into one terminal-native, Ollama-powered AI assistant — designed to feel like Claude Code, built to run like a pro. Features 12 built-in tools including system info, calculator, and screenshot.</div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Ollama</span>
+        <span class="tech-badge">CLI</span>
+        <span class="tech-badge">Agentic</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-primary" href="https://github.com/SelvaUx/SaraAI-Max" target="_blank" style="font-size:0.85rem;padding:0.6rem 1.2rem">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- OTDR-AI -->
+    <div class="project-detail filterable reveal" data-category="ai">
+      <span class="project-icon">🔆</span>
+      <div class="project-name">OTDR-AI — Optical Fiber Fault Detection</div>
+      <div class="project-desc">AI-based system to detect and analyze faults in optical fiber communication using OTDR data. Achieves 99.5% accuracy with a hybrid CNN-LSTM architecture.</div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">CNN-LSTM</span>
+        <span class="tech-badge">TensorFlow</span>
+        <span class="tech-badge">Signal Processing</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-primary" href="https://github.com/SelvaUx/OTDR-AI" target="_blank" style="font-size:0.85rem;padding:0.6rem 1.2rem">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Sara-OS -->
+    <div class="project-detail filterable reveal" data-category="embedded">
+      <span class="project-icon">💻</span>
+      <div class="project-name">Sara-OS — AI-Powered Voice Operating System</div>
+      <div class="project-desc">Custom embedded OS concept with modular task execution, system control components, and AI assistant integration for autonomous device management.</div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Linux</span>
+        <span class="tech-badge">Shell</span>
+        <span class="tech-badge">Embedded</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-primary" href="https://github.com/SelvaUx/Sara-OS" target="_blank" style="font-size:0.85rem;padding:0.6rem 1.2rem">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Voice File Manager -->
+    <div class="project-detail filterable reveal" data-category="tools">
+      <span class="project-icon">🎤</span>
+      <div class="project-name">Voice File Manager</div>
+      <div class="project-desc">A Python desktop app for managing files using voice commands. Open folders, search files, and delete items by simply speaking. Features modern GUI, cross-platform support, and safe file operations.</div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Voice</span>
+        <span class="tech-badge">Desktop GUI</span>
+        <span class="tech-badge">Cross-Platform</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-primary" href="https://github.com/SelvaUx/voice-file-manager" target="_blank" style="font-size:0.85rem;padding:0.6rem 1.2rem">GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-title">Let's Build<br>The <span class="accent">Future</span></div>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com">selva.ux@yahoo.com</a>
+    <a class="btn btn-outline" href="https://github.com/SelvaUx" target="_blank">GitHub</a>
+  </div>
+  <p class="footer-copy">© 2026 Selva Pandi Francis · selvaux.in</p>
+</footer>
+
+</main>
+<script src="../assets/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Rain - Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background-color: #0d1117; overflow: hidden; font-family: monospace; }
+        canvas { display: block; }
+        #back { position: absolute; top: 20px; left: 20px; color: #c9d1d9; font-family: 'Inter', sans-serif; font-weight: 600; text-decoration: none; z-index: 10; padding: 10px 20px; background: rgba(22, 27, 34, 0.6); border-radius: 8px; border: 1px solid #30363d; backdrop-filter: blur(4px); transition: 0.3s ease;}
+        #back:hover { background: rgba(22, 27, 34, 1); border-color: #58a6ff; color: #58a6ff; }
+        #controls { position: absolute; top: 20px; right: 20px; z-index: 10; display: flex; gap: 10px; }
+        .color-btn { width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; cursor: pointer; transition: transform 0.2s;}
+        .color-btn:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <a id="back" href="../../lab/">&larr; Return to Lab</a>
+    <div id="controls">
+        <button class="color-btn" style="background:#58a6ff" onclick="setColor('#58a6ff')"></button>
+        <button class="color-btn" style="background:#3fb950" onclick="setColor('#3fb950')"></button>
+        <button class="color-btn" style="background:#ff7b72" onclick="setColor('#ff7b72')"></button>
+    </div>
+    
+    <canvas id="rainCanvas"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        
+        const fontSize = 16;
+        let columns = Math.floor(canvas.width / fontSize);
+        
+        let drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = (Math.random() * -100); 
+        }
+        
+        let mainColor = '#58a6ff'; // Developer blue by default
+        
+        window.setColor = function(color) {
+            mainColor = color;
+        }
+
+        let mouseX = -1000;
+        let mouseY = -1000;
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function draw() {
+            ctx.fillStyle = 'rgba(13, 17, 23, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                
+                const dist = Math.hypot(x - mouseX, y - mouseY);
+                if (dist < 100) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ffffff';
+                } else {
+                    ctx.fillStyle = mainColor;
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = mainColor;
+                }
+                
+                ctx.fillText(text, x, y);
+                
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i] += 0.8; // Custom fall speed
+            }
+        }
+        
+        setInterval(draw, 33);
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Retain columns
+            columns = Math.floor(canvas.width / fontSize);
+            const oldLen = drops.length;
+            drops.length = columns;
+            for(let i=oldLen; i<columns; i++) {
+                drops[i] = (Math.random() * -100);
+            }
+        });
+    </script>
+</body>
+</html>

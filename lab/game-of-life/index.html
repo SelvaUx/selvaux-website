@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway's Game of Life - Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px;}
+        canvas { background-color: #161b22; border: 1px solid #30363d; cursor: pointer; border-radius: 8px;}
+        .btn { background-color: #2ea043; color: white; padding: 8px 20px; border-radius: 6px; font-weight: 600; transition: all 0.2s;}
+        .btn:hover { background-color: #3fb950; }
+        .btn-alt { background-color: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 20px; border-radius: 6px; font-weight: 600; transition: all 0.2s;}
+        .btn-alt:hover { background-color: #30363d; border-color: #8b949e;}
+    </style>
+</head>
+<body>
+    <div class="w-full max-w-4xl flex justify-between items-center mb-6">
+        <a href="../../lab/" class="text-[#58a6ff] hover:text-blue-400 font-semibold border border-[#30363d] bg-[#161b22] px-4 py-2 rounded-lg transition hover:border-[#58a6ff]">&larr; Lab</a>
+        <h1 class="text-2xl font-bold text-white tracking-widest hidden md:block">AUTOMATON_CORE <span class="text-gray-500 text-sm">v1.0</span></h1>
+        
+        <div class="flex space-x-3">
+            <button id="startBtn" class="btn shadow-[0_0_10px_rgba(46,160,67,0.4)]">START</button>
+            <button id="randomBtn" class="btn-alt">RANDOMIZE</button>
+            <button id="clearBtn" class="btn-alt border-red-900 hover:border-red-500 hover:text-red-400">CLEAR</button>
+        </div>
+    </div>
+    
+    <canvas id="gridCanvas" width="800" height="500"></canvas>
+    
+    <p class="text-sm text-gray-400 mt-6 max-w-2xl text-center leading-relaxed">
+        <strong>Conway's Game of Life</strong>: Click or drag on the grid to spawn cells. The grid evolves based on mathematical rules. Any live cell with 2 or 3 neighbors survives. Any dead cell with exactly 3 neighbors becomes a live cell. All other cells die.
+    </p>
+
+    <script>
+        const canvas = document.getElementById('gridCanvas');
+        const ctx = canvas.getContext('2d');
+        const startBtn = document.getElementById('startBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        
+        const resolution = window.innerWidth < 600 ? 20 : 10; 
+        if(window.innerWidth < 850) {
+            canvas.width = window.innerWidth - 40;
+            canvas.height = 400;
+        }
+
+        const COLS = Math.floor(canvas.width / resolution);
+        const ROWS = Math.floor(canvas.height / resolution);
+        
+        let grid = buildGrid();
+        let isPlaying = false;
+        let animationId = null;
+
+        function buildGrid() {
+            return new Array(COLS).fill(null).map(() => new Array(ROWS).fill(0));
+        }
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let c = 0; c < COLS; c++) {
+                for (let r = 0; r < ROWS; r++) {
+                    const cell = grid[c][r];
+                    if (cell) {
+                        ctx.fillStyle = '#58a6ff';
+                        ctx.fillRect(c * resolution, r * resolution, resolution - 1, resolution - 1);
+                    }
+                }
+            }
+        }
+
+        function nextGen() {
+            const nextGrid = buildGrid();
+            for (let c = 0; c < COLS; c++) {
+                for (let r = 0; r < ROWS; r++) {
+                    const state = grid[c][r];
+                    let sum = 0;
+                    for (let i = -1; i < 2; i++) {
+                        for (let j = -1; j < 2; j++) {
+                            if (i === 0 && j === 0) continue;
+                            const x = c + i;
+                            const y = r + j;
+                            if (x >= 0 && x < COLS && y >= 0 && y < ROWS) {
+                                sum += grid[x][y];
+                            }
+                        }
+                    }
+                    if (state === 0 && sum === 3) nextGrid[c][r] = 1;
+                    else if (state === 1 && (sum < 2 || sum > 3)) nextGrid[c][r] = 0;
+                    else nextGrid[c][r] = state;
+                }
+            }
+            grid = nextGrid;
+        }
+
+        function update() {
+            drawGrid();
+            nextGen();
+            if(isPlaying) {
+                setTimeout(() => {
+                    animationId = requestAnimationFrame(update);
+                }, 80); // Speed control
+            }
+        }
+
+        let isDrawing = false;
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseleave', () => isDrawing = false);
+        
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const c = Math.floor((e.clientX - rect.left) / resolution);
+            const r = Math.floor((e.clientY - rect.top) / resolution);
+            if (c >= 0 && c < COLS && r >= 0 && r < ROWS) {
+                grid[c][r] = 1;
+                drawGrid();
+            }
+        });
+        
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const c = Math.floor((e.clientX - rect.left) / resolution);
+            const r = Math.floor((e.clientY - rect.top) / resolution);
+            if(c >= 0 && c < COLS && r >= 0 && r < ROWS) {
+                grid[c][r] = grid[c][r] ? 0 : 1;
+                drawGrid();
+            }
+        });
+
+        startBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            startBtn.innerText = isPlaying ? "PAUSE" : "START";
+            startBtn.style.backgroundColor = isPlaying ? "#da3633" : "#2ea043";
+            startBtn.style.boxShadow = isPlaying ? "0 0 10px rgba(218,54,51,0.4)" : "0 0 10px rgba(46,160,67,0.4)";
+            if (isPlaying) update();
+            else cancelAnimationFrame(animationId);
+        });
+
+        randomBtn.addEventListener('click', () => {
+            for (let c = 0; c < COLS; c++) {
+                for (let r = 0; r < ROWS; r++) {
+                    grid[c][r] = Math.random() > 0.85 ? 1 : 0;
+                }
+            }
+            drawGrid();
+        });
+
+        clearBtn.addEventListener('click', () => {
+            grid = buildGrid();
+            drawGrid();
+            if(isPlaying) startBtn.click();
+        });
+
+        // Initialize with random configuration
+        randomBtn.click();
+    </script>
+</body>
+</html>
