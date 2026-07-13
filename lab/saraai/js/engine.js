@@ -37,7 +37,8 @@ class SaraEngine {
      * @returns {Object} - Response object with message, intent, and confidence
      */
     processInput(userInput) {
-        if (!userInput || userInput.trim() === "") {
+        // Validate input exists and is a string
+        if (!userInput || typeof userInput !== 'string' || userInput.trim() === "") {
             return {
                 message: "Please say something!",
                 intent: "empty_input",
@@ -45,8 +46,18 @@ class SaraEngine {
             };
         }
 
-        // Normalize input
-        const normalizedInput = normalize(userInput);
+        // Normalize input with error handling
+        let normalizedInput;
+        try {
+            normalizedInput = normalize(userInput);
+        } catch (error) {
+            console.error('SaraAI: Error normalizing input:', error);
+            return {
+                message: "I encountered an error processing your input. Please try again.",
+                intent: "error",
+                confidence: 0
+            };
+        }
 
         // Store in history
         this.conversationHistory.push({

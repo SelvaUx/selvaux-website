@@ -7,6 +7,11 @@
  * @returns {string} - Normalized text
  */
 export function normalize(text) {
+    // Input validation
+    if (!text || typeof text !== 'string') {
+        return '';
+    }
+    
     return text
         .toLowerCase()                    // Convert to lowercase
         .replace(/[^a-z\s]/g, "")        // Remove punctuation
@@ -20,7 +25,26 @@ export function normalize(text) {
  * @returns {Array} - Array of keywords
  */
 export function extractKeywords(text) {
-    const stopWords = ["a", "an", "the", "is", "are", "was", "were", "in", "on", "at", "to", "for"];
+    // Expanded stop words list for better keyword extraction
+    const stopWords = [
+        "a", "an", "the", "is", "are", "was", "were", "in", "on", "at", "to", "for",
+        "of", "and", "or", "but", "if", "then", "else", "when", "where", "why", "how",
+        "what", "which", "who", "whom", "this", "that", "these", "those", "am", "be",
+        "been", "being", "have", "has", "had", "do", "does", "did", "will", "would",
+        "could", "should", "may", "might", "must", "shall", "can", "need", "dare",
+        "ought", "used", "i", "you", "he", "she", "it", "we", "they", "me", "him",
+        "her", "us", "them", "my", "your", "his", "its", "our", "their", "mine",
+        "yours", "hers", "ours", "theirs", "about", "above", "after", "again",
+        "against", "all", "any", "because", "before", "below", "between", "both",
+        "during", "from", "further", "into", "more", "most", "other", "out", "over",
+        "own", "same", "so", "some", "such", "than", "through", "under", "until",
+        "up", "very", "while", "with"
+    ];
+    
+    if (!text || typeof text !== 'string') {
+        return [];
+    }
+    
     return text
         .split(" ")
         .filter(word => word.length > 2 && !stopWords.includes(word));
