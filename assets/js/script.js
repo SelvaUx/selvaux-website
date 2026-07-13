@@ -33,6 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     let W, H;
     const icons = [];
+    
+    // Configuration constants
+    const CONFIG = {
+      INITIAL_ICON_COUNT: 25,
+      MAX_ICONS: 50,
+      SPAWN_CHANCE: 0.04,
+      MIN_SCALE: 10,
+      MAX_SCALE: 22,
+      MIN_OPACITY: 0.02,
+      MAX_OPACITY: 0.08,
+      MIN_VELOCITY_Y: 0.15,
+      MAX_VELOCITY_Y: 0.55,
+      MIN_DRIFT: -0.15,
+      MAX_DRIFT: 0.15,
+      MIN_ROTATION_SPEED: -0.5,
+      MAX_ROTATION_SPEED: 0.5,
+      ICON_REMOVAL_THRESHOLD: -30,
+      RESIZE_DEBOUNCE_MS: 250,
+    };
+    
     const shapes = [
       // Code bracket </>
       (ctx, s) => {
@@ -65,53 +85,64 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     ];
 
+    let resizeTimeout;
     function resize() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
     }
     resize();
-    window.addEventListener('resize', resize);
+    
+    // Debounced resize handler to prevent excessive calls
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, CONFIG.RESIZE_DEBOUNCE_MS);
+    });
 
     function spawnIcon() {
       const t = Math.random();
       const x = t > 0.3 && t < 0.5 ? 0.3 * W : t > 0.5 && t < 0.7 ? 0.7 * W : t * W;
       icons.push({
         x, y: H + 20,
-        vy: -(Math.random() * 0.4 + 0.15),
+        vy: -(Math.random() * (CONFIG.MAX_VELOCITY_Y - CONFIG.MIN_VELOCITY_Y) + CONFIG.MIN_VELOCITY_Y),
         rotation: Math.random() * 360,
-        vr: (Math.random() - 0.5) * 0.5,
-        scale: Math.random() * 12 + 10,
-        opacity: Math.random() * 0.06 + 0.02,
+        vr: (Math.random() - 0.5) * (CONFIG.MAX_ROTATION_SPEED - CONFIG.MIN_ROTATION_SPEED),
+        scale: Math.random() * (CONFIG.MAX_SCALE - CONFIG.MIN_SCALE) + CONFIG.MIN_SCALE,
+        opacity: Math.random() * (CONFIG.MAX_OPACITY - CONFIG.MIN_OPACITY) + CONFIG.MIN_OPACITY,
         shape: shapes[Math.floor(Math.random() * shapes.length)],
-        drift: (Math.random() - 0.5) * 0.15,
+        drift: (Math.random() - 0.5) * (CONFIG.MAX_DRIFT - CONFIG.MIN_DRIFT),
       });
     }
 
     // Seed initial icons
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < CONFIG.INITIAL_ICON_COUNT; i++) {
       const icon = {
         x: Math.random() * W, y: Math.random() * H,
-        vy: -(Math.random() * 0.4 + 0.15),
+        vy: -(Math.random() * (CONFIG.MAX_VELOCITY_Y - CONFIG.MIN_VELOCITY_Y) + CONFIG.MIN_VELOCITY_Y),
         rotation: Math.random() * 360,
-        vr: (Math.random() - 0.5) * 0.5,
-        scale: Math.random() * 12 + 10,
-        opacity: Math.random() * 0.06 + 0.02,
+        vr: (Math.random() - 0.5) * (CONFIG.MAX_ROTATION_SPEED - CONFIG.MIN_ROTATION_SPEED),
+        scale: Math.random() * (CONFIG.MAX_SCALE - CONFIG.MIN_SCALE) + CONFIG.MIN_SCALE,
+        opacity: Math.random() * (CONFIG.MAX_OPACITY - CONFIG.MIN_OPACITY) + CONFIG.MIN_OPACITY,
         shape: shapes[Math.floor(Math.random() * shapes.length)],
-        drift: (Math.random() - 0.5) * 0.15,
+        drift: (Math.random() - 0.5) * (CONFIG.MAX_DRIFT - CONFIG.MIN_DRIFT),
       };
       icons.push(icon);
     }
 
     function drawIcons() {
       ctx.clearRect(0, 0, W, H);
-      if (Math.random() > 0.96 && icons.length < 50) spawnIcon();
+      if (Math.random() < CONFIG.SPAWN_CHANCE && icons.length < CONFIG.MAX_ICONS) spawnIcon();
 
       for (let i = icons.length - 1; i >= 0; i--) {
         const ic = icons[i];
         ic.y += ic.vy;
         ic.x += ic.drift;
         ic.rotation += ic.vr;
-        if (ic.y < -30) { icons.splice(i, 1); continue; }
+        
+        // Remove icons that go off-screen vertically OR horizontally (memory leak fix)
+        if (ic.y < CONFIG.ICON_REMOVAL_THRESHOLD || ic.x < -50 || ic.x > W + 50) {
+          icons.splice(i, 1);
+          continue;
+        }
 
         ctx.save();
         ctx.translate(ic.x, ic.y);
