@@ -15,13 +15,19 @@ class UIController {
      * Initialize UI elements and event listeners
      */
     init() {
-        // Get DOM elements
+        // Get DOM elements with null checks
         this.chatMessages = document.getElementById('chat-messages');
         this.userInput = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-button');
         this.statusIndicator = document.getElementById('status-indicator');
         this.intentDisplay = document.getElementById('intent-display');
         this.confidenceDisplay = document.getElementById('confidence-display');
+
+        // Validate critical elements exist
+        if (!this.chatMessages || !this.userInput || !this.sendButton) {
+            console.warn('SaraAI: Critical chat elements not found. Chat functionality disabled.');
+            return;
+        }
 
         // Set up event listeners
         this.sendButton.addEventListener('click', () => this.handleSend());
@@ -80,6 +86,12 @@ class UIController {
      * @param {string} sender - 'user' or 'sara'
      */
     addMessage(message, sender) {
+        // Null check for chatMessages container
+        if (!this.chatMessages) {
+            console.warn('SaraAI: Chat messages container not found');
+            return;
+        }
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}-message`;
 
@@ -151,6 +163,23 @@ class UIController {
         <div>Responses: ${status.statistics.totalResponses}</div>
       `;
         }
+    }
+
+    /**
+     * Sanitize user input to prevent XSS attacks
+     * Note: Currently using textContent which automatically escapes HTML,
+     * but this method is available for future use if innerHTML is needed
+     * @param {string} input - Raw user input
+     * @returns {string} - Sanitized input
+     */
+    sanitizeInput(input) {
+        if (!input || typeof input !== 'string') {
+            return '';
+        }
+        // Create a temporary element to escape HTML
+        const temp = document.createElement('div');
+        temp.textContent = input;
+        return temp.innerHTML;
     }
 }
 
