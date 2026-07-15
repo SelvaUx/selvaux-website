@@ -4,10 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Lab — Selva Pandi Francis</title>
-  <meta name="description" content="Interactive experiments, games, and prototypes by Selva Pandi Francis.">
+  <meta name="description" content="Interactive experiments, games, and prototypes by Selva Pandi Francis — Cyber Snake, Matrix Rain, Game of Life, and more.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="The Lab — Selva Pandi Francis">
+  <meta property="og:description" content="Interactive experiments, mini-games, and live prototypes. Cyber Snake, Matrix Rain, Game of Life.">
+  <meta property="og:url" content="https://selvaux.in/lab/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body{opacity:1;transition:opacity 0.25s ease}
+    body.fade-out{opacity:0}
+    .lab-hero{padding:6rem 2rem 2rem;max-width:var(--max-w);margin:0 auto}
+    @media(min-width:768px){.lab-hero{padding:7rem 4rem 2rem}}
+    .lab-hero-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary-500);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+    .lab-hero-label::before{content:'';display:block;width:24px;height:2px;background:var(--primary-500);border-radius:2px}
+    .lab-section{padding:2rem 2rem 5rem;max-width:var(--max-w);margin:0 auto}
+    @media(min-width:768px){.lab-section{padding:2rem 4rem 6rem}}
+    /* Override lab-grid to 2 col on mid */
+    .lab-grid-main{display:grid;grid-template-columns:1fr;gap:1.5rem}
+    @media(min-width:560px){.lab-grid-main{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:900px){.lab-grid-main{grid-template-columns:repeat(3,1fr)}}
+  </style>
 </head>
 <body>
 
@@ -17,32 +38,88 @@
 <nav>
   <a class="nav-logo" href="/">Selva<span>Ux</span></a>
   <div class="nav-links desktop-only">
-    <a href="/about/">About</a>
-    <a href="/projects/">Projects</a>
-    <a href="/lab/" class="active">Lab</a>
-    <a href="/blog/">Blog</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/experience/" class="nav-link">Experience</a>
+    <a href="/lab/" class="nav-link active">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
   </div>
   <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu">
-  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
 </div>
 
 <main>
 
-<div class="blog-coming">
-  <div class="section-label">// the lab</div>
-  <h1 class="section-title">Coming <span class="accent">Soon</span> 🧪</h1>
-  <p class="section-desc" style="text-align:center;margin:0 auto">Experiments, fun ideas, and half-baked prototypes are brewing. Check back soon.</p>
+<div class="lab-hero">
+  <div class="lab-hero-label">The Lab</div>
+  <h1 class="section-title">Experiments &amp; <span class="accent">Playground</span></h1>
+  <p class="section-desc">Live demos, interactive experiments, and half-baked prototypes. Click anything — it's probably alive.</p>
+</div>
 
-  <div class="blog-terminal">
-    <div class="line"><span class="prompt">selvaux@lab ~ $</span> npm run build:experiments</div>
-    <div class="line" style="color:var(--primary-500)">⠋ Compiling experiments...</div>
-    <div class="line"><span class="prompt">selvaux@lab ~ $</span> echo "Stay tuned"<span class="typing"> </span></div>
-  </div>
+<div class="lab-section">
+  <div class="lab-grid-main">
 
-  <div style="margin-top:2rem">
-    <a class="btn btn-primary" href="/">← Back Home</a>
+    <!-- Cyber Snake -->
+    <a class="lab-card reveal" href="/lab/cyber-snake/" style="text-decoration:none;display:block">
+      <div class="lab-card-icon">🐍</div>
+      <div class="lab-status live"><span class="status-dot"></span>Live</div>
+      <div class="lab-card-title">Cyber Snake</div>
+      <div class="lab-card-desc">A neon cyberpunk-themed Snake game. Classic mechanics, futuristic visuals. How long can you survive?</div>
+      <span class="lab-launch">Play Now</span>
+    </a>
+
+    <!-- Matrix Rain -->
+    <a class="lab-card reveal" href="/lab/matrix-rain/" style="text-decoration:none;display:block">
+      <div class="lab-card-icon">🟩</div>
+      <div class="lab-status live"><span class="status-dot"></span>Live</div>
+      <div class="lab-card-title">Matrix Rain</div>
+      <div class="lab-card-desc">The iconic digital rain effect from The Matrix, rendered in real-time on canvas. Hypnotic and beautiful.</div>
+      <span class="lab-launch">Launch</span>
+    </a>
+
+    <!-- Game of Life -->
+    <a class="lab-card reveal" href="/lab/game-of-life/" style="text-decoration:none;display:block">
+      <div class="lab-card-icon">🧬</div>
+      <div class="lab-status live"><span class="status-dot"></span>Live</div>
+      <div class="lab-card-title">Game of Life</div>
+      <div class="lab-card-desc">Conway's Game of Life — cellular automaton simulation. Draw cells, watch patterns evolve, find emergent complexity.</div>
+      <span class="lab-launch">Simulate</span>
+    </a>
+
+    <!-- SaraAI Demo -->
+    <a class="lab-card reveal" href="/lab/saraai/" style="text-decoration:none;display:block">
+      <div class="lab-card-icon">🤖</div>
+      <div class="lab-status beta"><span class="status-dot"></span>Beta</div>
+      <div class="lab-card-title">SaraAI Web Demo</div>
+      <div class="lab-card-desc">A lightweight browser demo of SaraAI's conversation interface. Ask questions, get answers. No install needed.</div>
+      <span class="lab-launch">Try It</span>
+    </a>
+
+    <!-- Sandbox -->
+    <a class="lab-card reveal" href="/lab/sandbox/" style="text-decoration:none;display:block">
+      <div class="lab-card-icon">🏖️</div>
+      <div class="lab-status wip"><span class="status-dot"></span>WIP</div>
+      <div class="lab-card-title">Creative Sandbox</div>
+      <div class="lab-card-desc">An open canvas for physics simulations, particle systems, and interactive art experiments. Always changing.</div>
+      <span class="lab-launch">Explore</span>
+    </a>
+
+    <!-- Coming Soon card -->
+    <div class="lab-card reveal" style="opacity:0.6;cursor:default">
+      <div class="lab-card-icon">⚗️</div>
+      <div class="lab-status wip"><span class="status-dot"></span>Brewing</div>
+      <div class="lab-card-title">Next Experiment</div>
+      <div class="lab-card-desc">Something new is being cooked. Check back soon — this lab never sleeps.</div>
+      <span style="font-family:var(--font-mono);font-size:.75rem;color:var(--neutral-400)">Coming Q3 2026</span>
+    </div>
+
   </div>
 </div>
 
@@ -57,5 +134,16 @@
 
 </main>
 <script src="../assets/js/script.js" defer></script>
+<script>
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
+});
+</script>
 </body>
 </html>

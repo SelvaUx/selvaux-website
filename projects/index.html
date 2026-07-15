@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Selva Pandi Francis</title>
   <meta name="description" content="SaraAI, OTDR-AI, AquaSync, SaraOS and more projects by Selva Pandi Francis.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="Projects — Selva Pandi Francis">
+  <meta property="og:description" content="SaraAI, OTDR-AI, Sara-OS, Voice File Manager and more engineering projects.">
+  <meta property="og:url" content="https://selvaux.in/projects/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body{opacity:1;transition:opacity 0.25s ease}
+    body.fade-out{opacity:0}
+  </style>
 </head>
 <body>
 
@@ -17,15 +28,21 @@
 <nav>
   <a class="nav-logo" href="/">Selva<span>Ux</span></a>
   <div class="nav-links desktop-only">
-    <a href="/about/">About</a>
-    <a href="/projects/" class="active">Projects</a>
-    <a href="/lab/">Lab</a>
-    <a href="/blog/">Blog</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link active">Projects</a>
+    <a href="/experience/" class="nav-link">Experience</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
   </div>
   <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu">
-  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
 </div>
 
 <main>
@@ -131,5 +148,16 @@
 
 </main>
 <script src="../assets/js/script.js" defer></script>
+<script>
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
+});
+</script>
 </body>
 </html>

@@ -135,6 +135,7 @@ nav{
 .mobile-menu.open a:nth-child(3){transition-delay:.2s}
 .mobile-menu.open a:nth-child(4){transition-delay:.3s}
 .mobile-menu.open a:nth-child(5){transition-delay:.4s}
+.mobile-menu.open a:nth-child(6){transition-delay:.5s}
 
 /* ── MAIN ── */
 main{position:relative;z-index:1}

@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Experience — Selva Pandi Francis</title>
   <meta name="description" content="Internships and professional experience of Selva Pandi Francis — Embedded Systems, PCB Design, IoT, and AI engineering.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="Experience — Selva Pandi Francis">
+  <meta property="og:description" content="Embedded Systems & PCB Design intern at Vi Microsystems. 6 months of real hardware engineering experience.">
+  <meta property="og:url" content="https://selvaux.in/experience/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -629,6 +636,18 @@
     });
   }, { threshold: 0.12 });
   entries.forEach(el => io.observe(el));
+
+  // Page transition
+  document.querySelectorAll('a[href]').forEach(a=>{
+    if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+      a.addEventListener('click',e=>{
+        e.preventDefault();const href=a.href;
+        document.body.style.opacity='0';
+        document.body.style.transition='opacity .22s ease';
+        setTimeout(()=>{location.href=href;},220);
+      });
+    }
+  });
 </script>
 </body>
 </html>

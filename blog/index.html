@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Selva Pandi Francis</title>
-  <meta name="description" content="Blog posts and thoughts by Selva Pandi Francis — coming soon.">
+  <meta name="description" content="Blog posts and thoughts on AI, Embedded Systems, and building the future — by Selva Pandi Francis. Launching Q3 2026.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="Blog — Selva Pandi Francis">
+  <meta property="og:description" content="Thoughts on AI, Embedded Systems, and building the future. Launching Q3 2026.">
+  <meta property="og:url" content="https://selvaux.in/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body{opacity:1;transition:opacity 0.25s ease}
+    body.fade-out{opacity:0}
+    .blog-topics{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.5rem 0 2rem}
+    .blog-topic{padding:.4rem 1rem;border-radius:var(--radius-full);font-size:.8rem;font-family:var(--font-mono);background:var(--primary-50);color:var(--primary-500);border:1px solid var(--primary-200)}
+    .notify-form{display:flex;gap:.75rem;max-width:420px;width:100%;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .notify-input{flex:1;min-width:200px;padding:.75rem 1.25rem;border-radius:var(--radius-full);border:1.5px solid var(--neutral-200);font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color var(--transition)}
+    .notify-input:focus{border-color:var(--primary-500)}
+  </style>
 </head>
 <body>
 
@@ -17,32 +33,53 @@
 <nav>
   <a class="nav-logo" href="/">Selva<span>Ux</span></a>
   <div class="nav-links desktop-only">
-    <a href="/about/">About</a>
-    <a href="/projects/">Projects</a>
-    <a href="/lab/">Lab</a>
-    <a href="/blog/" class="active">Blog</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/experience/" class="nav-link">Experience</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link active">Blog</a>
   </div>
   <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu">
-  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
 </div>
 
 <main>
 
 <div class="blog-coming">
   <div class="section-label">// blog</div>
-  <h1 class="section-title">Coming <span class="accent">Soon</span></h1>
-  <p class="section-desc" style="text-align:center;margin:0 auto">I'm currently writing some interesting thoughts on AI, embedded systems, and building the future.</p>
+  <h1 class="section-title">Coming <span class="accent">Q3 2026</span> ✍️</h1>
+  <p class="section-desc" style="text-align:center;margin:0 auto 1.5rem">Writing honest, technical thoughts on AI, embedded systems, hardware engineering, and building a tech empire from scratch.</p>
+
+  <div class="blog-topics">
+    <span class="blog-topic">🤖 AI &amp; LLMs</span>
+    <span class="blog-topic">🔌 Embedded Systems</span>
+    <span class="blog-topic">🔆 Photonics</span>
+    <span class="blog-topic">🧠 Self-Learning</span>
+    <span class="blog-topic">⚙️ PCB Design</span>
+    <span class="blog-topic">🚀 Building in Public</span>
+  </div>
 
   <div class="blog-terminal">
     <div class="line"><span class="prompt">selvaux@blog ~ $</span> npm run build:thoughts</div>
     <div class="line" style="color:var(--primary-500)">⠋ Compiling blog posts...</div>
-    <div class="line"><span class="prompt">selvaux@blog ~ $</span> echo "Check back soon"<span class="typing"> </span></div>
+    <div class="line"><span class="prompt">selvaux@blog ~ $</span> echo "ETA: Q3 2026"<span class="typing"> </span></div>
+  </div>
+
+  <p style="font-family:var(--font-mono);font-size:.8rem;color:var(--neutral-400);margin:1.5rem 0 .75rem">Get notified when the first post drops:</p>
+  <div class="notify-form">
+    <input class="notify-input" id="notify-email" type="email" placeholder="your@email.com" aria-label="Email for blog notification">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com?subject=Blog%20Notification%20Request" style="white-space:nowrap">Notify Me →</a>
   </div>
 
   <div style="margin-top:2rem">
-    <a class="btn btn-primary" href="/">← Back Home</a>
+    <a class="btn btn-outline" href="/">← Back Home</a>
   </div>
 </div>
 
@@ -52,5 +89,16 @@
 
 </main>
 <script src="../assets/js/script.js" defer></script>
+<script>
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
+});
+</script>
 </body>
 </html>

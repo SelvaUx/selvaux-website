@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found · Selva Pandi Francis</title>
+  <meta name="description" content="This page doesn't exist. But the rest of selvaux.in does.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    body{opacity:1;transition:opacity .25s ease}
+    body.fade-out{opacity:0}
+    .not-found{
+      min-height:100vh;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;text-align:center;
+      padding:2rem;
+    }
+    .nf-code{
+      font-family:var(--font-mono);
+      font-size:clamp(5rem,18vw,10rem);
+      font-weight:800;
+      line-height:1;
+      background:linear-gradient(135deg, var(--primary-500), var(--primary-200));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin-bottom:1rem;
+      letter-spacing:-0.04em;
+    }
+    .nf-title{
+      font-family:var(--font-display);
+      font-size:clamp(1.5rem,4vw,2.5rem);
+      font-weight:800;
+      color:var(--black);
+      margin-bottom:0.75rem;
+    }
+    .nf-desc{
+      color:var(--neutral-500);
+      max-width:480px;
+      line-height:1.7;
+      margin-bottom:2.5rem;
+      font-size:1rem;
+    }
+    .nf-terminal{
+      background:var(--neutral-100);
+      border-radius:var(--radius-md);
+      padding:1.5rem 2rem;
+      font-family:var(--font-mono);
+      font-size:0.82rem;
+      color:var(--neutral-600);
+      max-width:400px;
+      width:100%;
+      text-align:left;
+      margin-bottom:2.5rem;
+      border:1px solid var(--neutral-200);
+    }
+    .nf-terminal .prompt{color:var(--primary-500);font-weight:700}
+    .nf-terminal .err{color:#E53E3E}
+    .nf-links{display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center}
+    .nf-glitch{
+      position:relative;display:inline-block;
+    }
+    .nf-glitch::before,.nf-glitch::after{
+      content:attr(data-text);
+      position:absolute;inset:0;
+      background:linear-gradient(135deg, var(--primary-500), var(--primary-200));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .nf-glitch::before{
+      animation:glitch-1 3s infinite;clip-path:polygon(0 0,100% 0,100% 45%,0 45%);
+      transform:translate(-2px,0);
+    }
+    .nf-glitch::after{
+      animation:glitch-2 3s infinite;clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);
+      transform:translate(2px,0);
+    }
+    @keyframes glitch-1{
+      0%,90%,100%{transform:translate(-2px,0);opacity:1}
+      92%{transform:translate(-4px,-1px);opacity:.8}
+      94%{transform:translate(2px,1px);opacity:.9}
+    }
+    @keyframes glitch-2{
+      0%,90%,100%{transform:translate(2px,0);opacity:1}
+      92%{transform:translate(4px,1px);opacity:.8}
+      94%{transform:translate(-2px,-1px);opacity:.9}
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<canvas id="icon-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="/">Selva<span>Ux</span></a>
+  <div class="nav-links desktop-only">
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/experience/" class="nav-link">Experience</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+  </div>
+  <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
+</div>
+
+<div class="not-found">
+  <div class="nf-code nf-glitch" data-text="404">404</div>
+  <h1 class="nf-title">Page Not Found</h1>
+  <p class="nf-desc">
+    Looks like this page got lost in the matrix. But everything else on <strong>selvaux.in</strong> is still running perfectly.
+  </p>
+  <div class="nf-terminal">
+    <div><span class="prompt">selvaux@web ~ $</span> get <span id="nf-path">this-page</span></div>
+    <div class="err" style="margin:.4rem 0">✗ Error 404: Resource not found</div>
+    <div><span class="prompt">selvaux@web ~ $</span> redirect → home<span style="border-right:2px solid var(--primary-500);animation:blink .8s infinite"> </span></div>
+  </div>
+  <div class="nf-links">
+    <a class="btn btn-primary" href="/">← Go Home</a>
+    <a class="btn btn-outline" href="/projects/">Projects</a>
+    <a class="btn btn-outline" href="/experience/">Experience</a>
+    <a class="btn btn-outline" href="/about/">About</a>
+  </div>
+</div>
+
+<script src="/assets/js/script.js" defer></script>
+<script>
+// Show current path in terminal
+const pathEl = document.getElementById('nf-path');
+if(pathEl) pathEl.textContent = location.pathname;
+
+// Page transition
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
+});
+</script>
+</body>
+</html>

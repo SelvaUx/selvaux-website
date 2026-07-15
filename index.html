@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selva Pandi Francis — Empire Builder</title>
   <meta name="description" content="ECE student building the future with AI, IoT, and embedded systems. Creator of SaraAI, OTDR-AI, and AquaSync.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="Selva Pandi Francis — Empire Builder">
+  <meta property="og:description" content="ECE student building AI, IoT &amp; Embedded Systems. Creator of SaraAI, OTDR-AI, Sara-OS.">
+  <meta property="og:url" content="https://selvaux.in">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Selva Pandi Francis — Empire Builder">
+  <meta name="twitter:description" content="ECE student building AI, IoT &amp; Embedded Systems.">
+  <style>body{opacity:1;transition:opacity .25s ease}body.fade-out{opacity:0}</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -61,6 +71,7 @@
     <div class="hero-cta reveal">
       <a class="btn btn-primary" href="/projects/">View Projects →</a>
       <a class="btn btn-outline" href="#connect">Connect</a>
+      <a class="btn btn-outline" href="/experience/" style="border-color:var(--primary-200);color:var(--primary-500)">🏅 Experience</a>
     </div>
 
     <!-- Profile -->
@@ -187,6 +198,35 @@
   </div>
 </section>
 
+<!-- EXPERIENCE TEASER -->
+<section style="background:var(--primary-50)">
+  <div class="section-inner">
+    <div class="section-label reveal">Work Experience</div>
+    <h2 class="section-title reveal">Real World <span class="accent">Internships</span></h2>
+    <div class="principles-grid reveal">
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.75rem;border:1.5px solid var(--primary-100);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--primary-500),var(--primary-200));border-radius:4px 0 0 4px"></div>
+        <div style="font-size:1.5rem;margin-bottom:.75rem">🔌</div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1.1rem;margin-bottom:.25rem">Embedded Systems &amp; PCB Design Intern</div>
+        <div style="color:var(--primary-500);font-size:.85rem;font-weight:600;margin-bottom:.5rem">Vi Microsystems Pvt. Ltd.</div>
+        <div style="font-family:var(--font-mono);font-size:.75rem;color:var(--neutral-400);margin-bottom:.75rem">Jun – Jul 2026 · Chennai · On-site</div>
+        <p style="font-size:.88rem;color:var(--neutral-600);line-height:1.6">RPS assembly, PCB design, Edge AI, and electronic manufacturing. Earned completion certificate.</p>
+      </div>
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.75rem;border:1.5px solid var(--neutral-200);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--primary-400),var(--primary-100));border-radius:4px 0 0 4px"></div>
+        <div style="font-size:1.5rem;margin-bottom:.75rem">⚙️</div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1.1rem;margin-bottom:.25rem">Embedded Systems Intern</div>
+        <div style="color:var(--primary-500);font-size:.85rem;font-weight:600;margin-bottom:.5rem">Topgrade Innovation</div>
+        <div style="font-family:var(--font-mono);font-size:.75rem;color:var(--neutral-400);margin-bottom:.75rem">Jan – Apr 2026 · 4 months</div>
+        <p style="font-size:.88rem;color:var(--neutral-600);line-height:1.6">Microcontroller programming, sensor interfacing, firmware development and real-time system validation.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem" class="reveal">
+      <a class="btn btn-primary" href="/experience/">View Full Experience →</a>
+    </div>
+  </div>
+</section>
+
 <!-- PRINCIPLES -->
 <section>
   <div class="section-inner">
@@ -227,5 +267,16 @@
 </main>
 
 <script src="assets/js/script.js" defer></script>
+<script>
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
+});
+</script>
 </body>
 </html>

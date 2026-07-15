@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Selva Pandi Francis</title>
   <meta name="description" content="ECE Engineer, AI Developer, Future Tech Innovator. Building the future with AI and Intelligence.">
+  <!-- OG / Social -->
+  <meta property="og:title" content="About — Selva Pandi Francis">
+  <meta property="og:description" content="ECE student, AI builder, Embedded Systems engineer. Creator of SaraAI, OTDR-AI, Sara-OS.">
+  <meta property="og:url" content="https://selvaux.in/about/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://selvaux.in/assets/images/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Selva Pandi Francis">
+  <meta name="twitter:description" content="ECE student, AI builder, Embedded Systems engineer.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -26,7 +35,7 @@
     .skill-chip{background:var(--neutral-100);border:1px solid var(--neutral-200);padding:.5rem 1rem;border-radius:12px;font-size:.85rem;color:var(--neutral-700);transition:all .3s ease;cursor:default}
     .skill-chip:hover{background:var(--primary-50);border-color:var(--primary-200);color:var(--primary-500);transform:translateY(-2px)}
     .skill-chip.highlight{background:var(--primary-500);color:#fff;border-color:var(--primary-500)}
-    .skill-chip.highlight:hover{background:var(--primary-600);transform:translateY(-2px)}
+    .skill-chip.highlight:hover{background:var(--primary-400);transform:translateY(-2px)}
 
     .strength-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:1.5rem}
     .strength-item{background:var(--neutral-100);border-radius:20px;padding:1.5rem;transition:all .3s ease}
@@ -50,10 +59,12 @@
     .tl-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
     .tl-item::before{content:'';position:absolute;left:-2rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--primary-500);border:3px solid #fff;box-shadow:0 0 0 2px var(--primary-200)}
     .tl-item.active::before{animation:pulse-dot 2s infinite}
+    .tl-item.internship::before{background:var(--primary-400)}
     @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 2px var(--primary-200)}50%{box-shadow:0 0 0 6px rgba(245,65,66,.15)}}
     .tl-year{font-family:var(--font-mono);font-size:.8rem;color:var(--primary-500);font-weight:700}
     .tl-title{font-family:var(--font-display);font-size:1.1rem;margin:.2rem 0}
     .tl-desc{color:var(--neutral-500);font-size:.85rem;line-height:1.5}
+    .tl-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--font-mono);font-size:.65rem;background:var(--primary-50);color:var(--primary-500);border:1px solid var(--primary-200);border-radius:9999px;padding:.2rem .6rem;margin-top:.4rem;font-weight:700}
 
     .tagline-carousel{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
     .tagline-carousel::-webkit-scrollbar{display:none}
@@ -68,6 +79,10 @@
     .gs-card:hover{transform:translateY(-3px);background:var(--primary-50)}
     .gs-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--primary-500)}
     .gs-label{font-size:.8rem;color:var(--neutral-500);margin-top:.2rem}
+
+    /* Page transition */
+    body{opacity:1;transition:opacity 0.25s ease}
+    body.fade-out{opacity:0}
   </style>
 </head>
 <body>
@@ -80,13 +95,19 @@
   <div class="nav-links desktop-only">
     <a href="/about/" class="nav-link active">About</a>
     <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/experience/" class="nav-link">Experience</a>
     <a href="/lab/" class="nav-link">Lab</a>
     <a href="/blog/" class="nav-link">Blog</a>
   </div>
   <div class="nav-hamburger mobile-only"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu">
-  <a href="/">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/lab/">Lab</a><a href="/blog/">Blog</a>
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
 </div>
 
 <main>
@@ -131,9 +152,6 @@
   </div>
 </section>
 
-
-
-
 <!-- SKILLS -->
 <section>
   <div class="section-inner">
@@ -141,24 +159,24 @@
     <h2 class="section-title reveal">Tech <span class="accent">Arsenal</span></h2>
 
     <div class="skill-section reveal">
-      <h3>🧠 AI & Software</h3>
+      <h3>🧠 AI &amp; Software</h3>
       <div class="skill-chips">
         <span class="skill-chip highlight">Python</span>
         <span class="skill-chip highlight">AI Agent Development</span>
         <span class="skill-chip">Machine Learning</span>
         <span class="skill-chip">Local LLMs (Ollama)</span>
-        <span class="skill-chip">NLP & Voice Assistants</span>
+        <span class="skill-chip">NLP &amp; Voice Assistants</span>
         <span class="skill-chip">Large Language Models</span>
         <span class="skill-chip highlight">Professional Vibe Coder</span>
       </div>
     </div>
 
     <div class="skill-section reveal">
-      <h3>⚙️ Systems & Tools</h3>
+      <h3>⚙️ Systems &amp; Tools</h3>
       <div class="skill-chips">
         <span class="skill-chip">Linux (Zorin OS)</span>
         <span class="skill-chip">Windows 11</span>
-        <span class="skill-chip highlight">Git & GitHub</span>
+        <span class="skill-chip highlight">Git &amp; GitHub</span>
         <span class="skill-chip">API Integration</span>
         <span class="skill-chip">n8n Automation</span>
         <span class="skill-chip">HTML / CSS / JS</span>
@@ -166,14 +184,16 @@
     </div>
 
     <div class="skill-section reveal">
-      <h3>🔌 Electronics & Embedded</h3>
+      <h3>🔌 Electronics &amp; Embedded</h3>
       <div class="skill-chips">
         <span class="skill-chip">Circuit Design (Proteus)</span>
         <span class="skill-chip">Arduino Programming</span>
         <span class="skill-chip">Microcontrollers</span>
-        <span class="skill-chip">Sensors & IoT</span>
-        <span class="skill-chip">PCB Design</span>
+        <span class="skill-chip">Sensors &amp; IoT</span>
+        <span class="skill-chip highlight">PCB Design</span>
         <span class="skill-chip">VLSI Basics</span>
+        <span class="skill-chip">Soldering</span>
+        <span class="skill-chip">RPS Assembly</span>
       </div>
     </div>
   </div>
@@ -192,7 +212,7 @@
       </div>
       <div class="strength-item reveal">
         <div class="s-icon">🧠</div>
-        <h4>Self-Learning & Research</h4>
+        <h4>Self-Learning &amp; Research</h4>
         <p>Every project is self-taught. No tutorials — just docs, curiosity, and midnight debugging.</p>
       </div>
       <div class="strength-item reveal">
@@ -226,6 +246,18 @@
     <h2 class="section-title reveal">The <span class="accent">Journey</span></h2>
     <div class="timeline-v2">
       <div class="tl-item active reveal">
+        <div class="tl-year">Jun – Jul 2026</div>
+        <div class="tl-title">Embedded Systems &amp; PCB Design Intern · Vi Microsystems</div>
+        <div class="tl-desc">On-site internship in Chennai — RPS assembly, PCB design, Edge AI, and electronic manufacturing. Earned completion certificate.</div>
+        <a href="/experience/" class="tl-badge">🏅 View Full Details →</a>
+      </div>
+      <div class="tl-item internship reveal">
+        <div class="tl-year">Jan – Apr 2026</div>
+        <div class="tl-title">Embedded Systems Intern · Topgrade Innovation</div>
+        <div class="tl-desc">4-month internship — microcontroller programming, sensor interfacing, I2C/SPI/UART protocols, firmware development and system validation.</div>
+        <a href="/experience/" class="tl-badge">🏅 View Full Details →</a>
+      </div>
+      <div class="tl-item reveal">
         <div class="tl-year">2026 — NOW</div>
         <div class="tl-title">SaraAI Max + SaraAI-n8n + Sara-OS</div>
         <div class="tl-desc">Agentic CLI with Ollama + 12 tools. n8n automation workflows. Custom AI-powered OS. The empire expands.</div>
@@ -248,7 +280,7 @@
       <div class="tl-item reveal">
         <div class="tl-year">2023</div>
         <div class="tl-title">B.E. ECE — Dr. G.U. Pope College</div>
-        <div class="tl-desc">Started Electronics & Communication Engineering. Specializing in VLSI, embedded systems, and AI/ML.</div>
+        <div class="tl-desc">Started Electronics &amp; Communication Engineering. Specializing in VLSI, embedded systems, and AI/ML.</div>
       </div>
     </div>
   </div>
@@ -324,7 +356,6 @@
 </main>
 <script src="../assets/js/script.js" defer></script>
 <script>
-// Animate github stat counters on this page too
 document.querySelectorAll('.gs-num[data-count]').forEach(el=>{
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){
@@ -340,6 +371,16 @@ document.querySelectorAll('.gs-num[data-count]').forEach(el=>{
     }});
   },{threshold:.3});
   observer.observe(el);
+});
+// Page transition
+document.querySelectorAll('a[href]').forEach(a=>{
+  if(a.hostname===location.hostname&&!a.getAttribute('href').startsWith('#')){
+    a.addEventListener('click',e=>{
+      e.preventDefault();const href=a.href;
+      document.body.classList.add('fade-out');
+      setTimeout(()=>{location.href=href;},220);
+    });
+  }
 });
 </script>
 </body>
