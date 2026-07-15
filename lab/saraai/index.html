@@ -4,111 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaraAI - Offline AI Behavior Simulator</title>
-    <meta name="description" content="Local AI behavior engine demonstrating intent-based architecture">
-
+    <title>SaraOS HUD — Interactive Lab Terminal</title>
+    <meta name="description" content="Futuristic offline-first tactical console simulating SaraOS & SaraAI Max modules.">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="hud-bg-noise"></div>
+    <div class="hud-scanline"></div>
+
     <div class="dashboard-container">
 
         <!-- Back Navigation -->
         <a href="../../lab/" class="back-link">
-            ← Back to Lab
+            <span class="back-arrow">⌁</span> Back to Lab
         </a>
 
-        <!-- Dashboard Header -->
+        <!-- Tactical HUD Header -->
         <header class="dashboard-header">
-            <div class="header-top">
-                <h1 class="dashboard-title">
-                    🤖 SaraAI
-                    <span style="font-size: 14px; font-weight: 400; color: var(--text-secondary);">v2.0</span>
+            <div class="header-glitch-wrap">
+                <h1 class="dashboard-title" data-text="SARA_OS // HUD TERMINAL">
+                    <span class="hud-bracket">[</span> SARA_OS // TERMINAL <span class="hud-bracket">]</span>
                 </h1>
-                <div id="status-indicator" class="status-bar">
-                    <span class="status-dot"></span>
-                    <span>SYSTEM: ONLINE</span>
-                    <span class="status-divider">|</span>
-                    <span>MODE: LOCAL SIMULATION</span>
+                <div class="theme-switcher-wrapper">
+                    <button class="theme-btn active" data-theme="default">Cyan Node</button>
+                    <button class="theme-btn" data-theme="stark">Stark Mode</button>
                 </div>
             </div>
-            <p class="header-subtitle">
-                Offline AI Behavior Engine – Intent-Based Architecture Demo
-            </p>
+            
+            <div class="header-status-grid">
+                <div class="status-item">
+                    <span class="label">LOCATION:</span>
+                    <span class="val">TAMIL NADU, IN</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">INTELLIGENCE:</span>
+                    <span class="val">100% OFFLINE</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">CORE TEMP:</span>
+                    <span class="val pulse-text" id="core-temp">42°C</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">NEURAL THREADS:</span>
+                    <span class="val">OLLAMA / VOSK</span>
+                </div>
+                <div class="status-item flex-right">
+                    <span class="status-dot"></span>
+                    <span class="val" id="status-text">SECURE COGNITION</span>
+                </div>
+            </div>
         </header>
 
         <!-- Main Content -->
         <div class="dashboard-content">
 
-            <!-- Chat Section -->
+            <!-- Chat & Command Section -->
             <section class="chat-section">
                 <div class="chat-header">
-                    💬 Conversation
+                    <span class="header-dot"></span> COGNITIVE LINK INTERFACE
+                    <span class="header-hint">Type commands like /help, /diagnose, /empire</span>
                 </div>
                 <div id="chat-messages" class="chat-messages">
                     <!-- Messages will be added here dynamically -->
                 </div>
-                <div class="chat-input">
-                    <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
-                    <button id="send-button">Send</button>
+                <div class="chat-input-wrapper">
+                    <div class="input-prompt">&gt;_</div>
+                    <input type="text" id="user-input" placeholder="Initiate handshake or input system commands..." autocomplete="off">
+                    <button id="send-button">EXECUTE</button>
                 </div>
             </section>
 
-            <!-- Side Panel -->
+            <!-- Holographic Side HUD -->
             <aside class="side-panel">
 
-                <!-- Debug Info -->
-                <div class="panel-card">
-                    <h3>🔍 Debug Info</h3>
+                <!-- Hologram Reactor -->
+                <div class="panel-card hologram-card">
+                    <div class="hologram-viewport">
+                        <div class="hologram-core">
+                            <div class="ring ring-outer"></div>
+                            <div class="ring ring-mid"></div>
+                            <div class="ring ring-inner"></div>
+                            <div class="core-center">⚡</div>
+                        </div>
+                        <div class="wave-visualizer">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="hologram-label">NEURAL ENERGY CORE STATUS: ACTIVE</div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="panel-card diagnostic-card">
+                    <h3>🔍 Link Diagnostics</h3>
                     <div class="info-row">
-                        <span class="info-label">Last Intent</span>
+                        <span class="info-label">IDENTIFIED INTENT:</span>
                         <span id="intent-display" class="info-value">-</span>
                     </div>
                     <div class="info-row">
-                        <span class="info-label">Confidence</span>
+                        <span class="info-label">CONFIDENCE THRESHOLD:</span>
                         <span id="confidence-display" class="info-value">-</span>
                     </div>
-                </div>
-
-                <!-- System Stats -->
-                <div class="panel-card">
-                    <h3>📊 System Stats</h3>
-                    <div id="stats-display">
-                        <div>
-                            <span>Intents:</span>
-                            <span>-</span>
-                        </div>
-                        <div>
-                            <span>Patterns:</span>
-                            <span>-</span>
-                        </div>
-                        <div>
-                            <span>Responses:</span>
-                            <span>-</span>
-                        </div>
+                    <div class="info-row">
+                        <span class="info-label">ENCRYPTION SHIELD:</span>
+                        <span class="info-value" style="color: var(--accent-green)">ACTIVE (LOCAL)</span>
                     </div>
                 </div>
 
-                <!-- Architecture Info -->
-                <div class="panel-card">
-                    <h3>⚙️ Architecture</h3>
-                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
-                        <p style="margin-bottom: 8px;">
-                            <strong style="color: var(--text-primary);">Flow:</strong><br>
-                            Input → Normalize → Match → Respond
-                        </p>
-                        <p style="margin-bottom: 8px;">
-                            <strong style="color: var(--text-primary);">Type:</strong><br>
-                            Rule-based intent detection
-                        </p>
-                        <p>
-                            <strong style="color: var(--text-primary);">Processing:</strong><br>
-                            100% local, no API calls
-                        </p>
+                <!-- Bio Card -->
+                <div class="panel-card bio-card">
+                    <h3>👤 Builder Profile</h3>
+                    <div class="bio-spec">
+                        <div class="spec-row"><span class="spec-lbl">NAME:</span><span class="spec-val">Francis (Selva.Ux)</span></div>
+                        <div class="spec-row"><span class="spec-lbl">CLASS:</span><span class="spec-val">ECE Hardware Engineer</span></div>
+                        <div class="spec-row"><span class="spec-lbl">ROLE:</span><span class="spec-val">AI Architect / Empire Builder</span></div>
+                        <div class="spec-row"><span class="spec-lbl">SPECIALTY:</span><span class="spec-val">Offline Edge Computing</span></div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="panel-card stats-card">
+                    <h3>📊 Node Matrix</h3>
+                    <div id="stats-display">
+                        <!-- Loaded dynamically -->
                     </div>
                 </div>
 
