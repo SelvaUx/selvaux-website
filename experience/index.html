@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — Selva Pandi Francis</title>
+  <meta name="description" content="Internships and professional experience of Selva Pandi Francis — Embedded Systems, PCB Design, IoT, and AI engineering.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* ── EXPERIENCE PAGE STYLES ── */
+
+    /* Page Hero */
+    .exp-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    @media(min-width:768px){ .exp-hero { padding: 6rem 4rem 3rem; } }
+
+    .exp-hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-500);
+      margin-bottom: 1.25rem;
+    }
+    .exp-hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary-500);
+      border-radius: 2px;
+    }
+
+    .exp-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+    .exp-hero-title .accent { color: var(--primary-500); }
+
+    .exp-hero-sub {
+      font-size: 1.125rem;
+      color: var(--neutral-500);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      padding: 2rem 2rem 6rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    @media(min-width:768px){ .timeline-section { padding: 2rem 4rem 6rem; } }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    @media(min-width:768px){ .timeline { padding-left: 3rem; } }
+
+    /* Vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary-500) 0%, var(--primary-200) 60%, transparent 100%);
+      border-radius: 2px;
+    }
+
+    /* Timeline Entry */
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .timeline-entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-entry:last-child { margin-bottom: 0; }
+
+    /* Dot */
+    .timeline-dot {
+      position: absolute;
+      left: -2.65rem;
+      top: 0.9rem;
+      width: 14px;
+      height: 14px;
+      background: var(--primary-500);
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--primary-200);
+      transition: box-shadow 0.3s ease;
+    }
+    @media(min-width:768px){ .timeline-dot { left: -3.65rem; } }
+    .timeline-entry:hover .timeline-dot {
+      box-shadow: 0 0 0 6px var(--primary-100);
+    }
+
+    /* Card */
+    .timeline-card {
+      background: var(--white);
+      border: 1.5px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--primary-500), var(--primary-200));
+      border-radius: 4px 0 0 4px;
+    }
+    .timeline-card:hover {
+      border-color: var(--primary-200);
+      box-shadow: 0 12px 40px rgba(245, 65, 66, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Card Header */
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .card-company-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--neutral-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      border: 1.5px solid var(--neutral-200);
+    }
+
+    .card-meta {
+      flex: 1;
+    }
+    .card-role {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 0.15rem;
+      line-height: 1.3;
+    }
+    .card-company {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-500);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--primary-50);
+      color: var(--primary-500);
+      border: 1px solid var(--primary-200);
+      border-radius: var(--radius-full);
+      padding: 0.3rem 0.75rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .card-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary-500);
+    }
+
+    /* Duration & Location row */
+    .card-info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    .card-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--neutral-500);
+      font-family: var(--font-mono);
+    }
+    .card-info-item svg {
+      width: 13px; height: 13px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* Description */
+    .card-overview {
+      font-size: 0.95rem;
+      color: var(--neutral-600);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Responsibilities */
+    .card-section-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--neutral-600);
+      line-height: 1.6;
+    }
+    .card-list-item::before {
+      content: '→';
+      color: var(--primary-500);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Skills Tags */
+    .card-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      background: var(--neutral-100);
+      color: var(--neutral-700);
+      border-radius: var(--radius-full);
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--neutral-200);
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .skill-tag:hover {
+      background: var(--primary-50);
+      color: var(--primary-500);
+      border-color: var(--primary-200);
+    }
+
+    /* Certificate strip */
+    .cert-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--primary-50) 0%, #fff 100%);
+      border: 1px solid var(--primary-200);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .cert-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .cert-text {
+      flex: 1;
+    }
+    .cert-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.1rem;
+    }
+    .cert-sub {
+      font-size: 0.78rem;
+      color: var(--neutral-500);
+      font-family: var(--font-mono);
+    }
+    .cert-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      background: var(--primary-500);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.7rem;
+      font-weight: 700;
+    }
+
+    /* Stats bar */
+    .exp-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 2.5rem 2rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      border-top: 1px solid var(--neutral-200);
+      border-bottom: 1px solid var(--neutral-200);
+      margin-bottom: 3rem;
+    }
+    @media(min-width:768px){ .exp-stats { padding: 2.5rem 4rem; } }
+
+    .exp-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .exp-stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+    }
+    .exp-stat-num .accent { color: var(--primary-500); }
+    .exp-stat-label {
+      font-size: 0.8rem;
+      color: var(--neutral-400);
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* CTA Section */
+    .exp-cta {
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .exp-cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .exp-cta-sub {
+      color: var(--neutral-500);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .exp-cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<canvas id="icon-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">Selva<span>Ux</span></a>
+  <div class="nav-links desktop-only">
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/projects/" class="nav-link">Projects</a>
+    <a href="/experience/" class="nav-link active">Experience</a>
+    <a href="/lab/" class="nav-link">Lab</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a class="nav-cta" href="/#connect">Connect</a>
+  </div>
+  <div class="nav-hamburger mobile-only" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/experience/">Experience</a>
+  <a href="/lab/">Lab</a>
+  <a href="/blog/">Blog</a>
+</div>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="exp-hero reveal">
+  <div class="exp-hero-label">Career Journey</div>
+  <h1 class="exp-hero-title">Real World<br><span class="accent">Experience</span></h1>
+  <p class="exp-hero-sub">
+    Hands-on internships in Embedded Systems, PCB Design, IoT, and Electronic Manufacturing — building hardware that actually works.
+  </p>
+</section>
+
+<!-- STATS -->
+<div class="exp-stats">
+  <div class="exp-stat reveal">
+    <div class="exp-stat-num">2<span class="accent">+</span></div>
+    <div class="exp-stat-label">Internships</div>
+  </div>
+  <div class="exp-stat reveal">
+    <div class="exp-stat-num">6<span class="accent">mo</span></div>
+    <div class="exp-stat-label">Total Experience</div>
+  </div>
+  <div class="exp-stat reveal">
+    <div class="exp-stat-num">2<span class="accent">×</span></div>
+    <div class="exp-stat-label">Certified</div>
+  </div>
+  <div class="exp-stat reveal">
+    <div class="exp-stat-num">∞</div>
+    <div class="exp-stat-label">Still Learning</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline">
+
+    <!-- INTERNSHIP 1: Vi Microsystems -->
+    <div class="timeline-entry" id="intern-vi">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="card-header">
+          <div class="card-company-row">
+            <div class="company-logo">🔌</div>
+            <div class="card-meta">
+              <div class="card-role">Embedded Systems & PCB Design Intern</div>
+              <div class="card-company">Vi Microsystems Pvt. Ltd.</div>
+            </div>
+          </div>
+          <div class="card-badge">Most Recent</div>
+        </div>
+
+        <div class="card-info-row">
+          <span class="card-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Jun 2026 – Jul 2026 · 2 months
+          </span>
+          <span class="card-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Perungudi, Chennai, Tamil Nadu · On-site
+          </span>
+          <span class="card-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Internship
+          </span>
+        </div>
+
+        <p class="card-overview">
+          Completed a one-month intensive internship focused on Embedded Systems, Edge AI, PCB Design, and Electronic Product Manufacturing. Gained real factory-floor experience with electronic assembly, testing infrastructure, and quality control workflows.
+        </p>
+
+        <div class="card-section-title">Key Responsibilities & Learnings</div>
+        <div class="card-list">
+          <div class="card-list-item">Assembled Regulated Power Supply (RPS) units and performed quality verification of RPS circuits</div>
+          <div class="card-list-item">Worked hands-on with electronic components — soldering, PCB assembly, and component identification</div>
+          <div class="card-list-item">Operated laboratory instruments: Function Generators (FG), Digital Multimeters (DMM), and Regulated Power Supplies for testing</div>
+          <div class="card-list-item">Learned PCB design concepts and embedded systems development workflows from senior engineers</div>
+          <div class="card-list-item">Gained practical exposure to electronic manufacturing, debugging, and quality control processes</div>
+          <div class="card-list-item">Explored Edge AI integration in embedded product pipelines</div>
+        </div>
+
+        <div class="card-section-title">Skills Applied</div>
+        <div class="card-skills">
+          <span class="skill-tag">Embedded Systems</span>
+          <span class="skill-tag">PCB Design</span>
+          <span class="skill-tag">Soldering</span>
+          <span class="skill-tag">Edge AI</span>
+          <span class="skill-tag">Electronic Manufacturing</span>
+          <span class="skill-tag">DMM / FG</span>
+          <span class="skill-tag">Quality Control</span>
+          <span class="skill-tag">RPS Assembly</span>
+        </div>
+
+        <div class="cert-strip">
+          <div class="cert-icon">🏅</div>
+          <div class="cert-text">
+            <div class="cert-title">Internship Completion Certificate</div>
+            <div class="cert-sub">Embedded Systems & PCB Design · 10 Jun – 10 Jul 2026</div>
+          </div>
+          <div class="cert-badge">Certified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERNSHIP 2: Topgrade Innovation -->
+    <div class="timeline-entry" id="intern-topgrade">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="card-header">
+          <div class="card-company-row">
+            <div class="company-logo">⚙️</div>
+            <div class="card-meta">
+              <div class="card-role">Embedded Systems Intern</div>
+              <div class="card-company">Topgrade Innovation</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-info-row">
+          <span class="card-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Jan 2026 – Apr 2026 · 4 months
+          </span>
+          <span class="card-info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Internship
+          </span>
+        </div>
+
+        <p class="card-overview">
+          Four-month internship focused on embedded systems development — working across the full hardware-software stack, from microcontroller programming to sensor interfacing and real-time system validation.
+        </p>
+
+        <div class="card-section-title">Key Responsibilities & Learnings</div>
+        <div class="card-list">
+          <div class="card-list-item">Built embedded applications using microcontrollers with sensor interfacing across multiple communication protocols</div>
+          <div class="card-list-item">Gained hands-on experience in hardware-software integration and real-time system development</div>
+          <div class="card-list-item">Developed and tested embedded applications involving communication protocols (I2C, SPI, UART) and peripheral interfacing</div>
+          <div class="card-list-item">Performed debugging, troubleshooting, and system validation on embedded hardware platforms</div>
+          <div class="card-list-item">Improved understanding of firmware development, IoT concepts, and embedded design methodologies</div>
+        </div>
+
+        <div class="card-section-title">Skills Applied</div>
+        <div class="card-skills">
+          <span class="skill-tag">Embedded C</span>
+          <span class="skill-tag">Microcontrollers</span>
+          <span class="skill-tag">IoT</span>
+          <span class="skill-tag">Hardware-Software Integration</span>
+          <span class="skill-tag">Debugging</span>
+          <span class="skill-tag">I2C / SPI / UART</span>
+          <span class="skill-tag">Sensor Interfacing</span>
+          <span class="skill-tag">Firmware Dev</span>
+        </div>
+
+        <div class="cert-strip">
+          <div class="cert-icon">🏅</div>
+          <div class="cert-text">
+            <div class="cert-title">Internship Completion Certificate</div>
+            <div class="cert-sub">Embedded Systems · Jan – Apr 2026</div>
+          </div>
+          <div class="cert-badge">Certified</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+<!-- CTA -->
+<section class="exp-cta reveal">
+  <div class="exp-cta-title">Let's Build<br><span class="accent">Together</span></div>
+  <p class="exp-cta-sub">Open to internships, collaborations, and real-world engineering challenges.</p>
+  <div class="exp-cta-btns">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com">Email Me →</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/selvaux/" target="_blank">LinkedIn</a>
+    <a class="btn btn-outline" href="/projects/">See My Projects</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="connect">
+  <div class="footer-title">Let's Build<br>The <span class="accent">Future</span></div>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="mailto:selva.ux@yahoo.com">selva.ux@yahoo.com</a>
+    <a class="btn btn-outline" href="https://github.com/SelvaUx" target="_blank">GitHub</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/selvaux/" target="_blank">LinkedIn</a>
+  </div>
+  <p class="footer-copy">© 2026 Selva Pandi Francis · selvaux.in · Built with ambition</p>
+</footer>
+
+<script src="../assets/js/script.js" defer></script>
+<script>
+  // Timeline reveal on scroll
+  const entries = document.querySelectorAll('.timeline-entry');
+  const io = new IntersectionObserver((obs) => {
+    obs.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 150);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  entries.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
